@@ -1,0 +1,633 @@
+/* -----------------------------------------------------*/
+/*common elements*/
+/* -----------------------------------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size:12px;
+    text-rendering: optimizeLegibility;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+}
+body{
+    margin:0px;
+    padding:0px;
+}
+p{
+    font-size:18px;
+    line-height: 33px;
+    word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+H1{
+    display:block;
+    width: auto;
+    font-size:48px;
+    font-weight: 300;
+}
+H2{
+    display: inline-block;
+    width: auto;
+    font-size:26px;
+    font-weight: 400;
+}
+.HeroButtonBlock{
+    display: block;
+    width:700px;
+    height:80px;
+    padding-left:70px;
+}
+.TextBothSides{
+    padding-left:20px;
+    padding-right:20px;
+    padding-bottom:100px;
+    padding-top:120px;
+}
+.TextSideL{
+    display:inline-block;
+    min-height:400px;
+    height:auto;
+    width:50%;
+    padding-top:127px;
+    padding-left:20px;
+    padding-bottom:100px;
+}
+.TextSideL1{
+    display:inline-block;
+    min-height:400px;
+    height:auto;
+    width:50%;
+    padding-top:127px;
+    padding-left:20px;
+    padding-bottom:100px;
+}
+.TextSideR{
+    display:inline-block;
+    float:right;
+    min-height:400px;
+    height:auto;
+    width:40%;
+    padding-top:100px;
+}
+.FloatingInfoBlock{
+    display:block;
+    min-height:400px;
+    height:auto;
+    width:1200px;
+    margin: auto;
+}
+.FloatingTextSpace2{
+    display:block;
+    width:100%;
+    min-height:400px;
+    height:auto;
+    color:#fff;
+}
+.MainIcon{
+    display: block;
+    height:220px;
+    margin:auto;
+}
+.MainIcon2{
+    display: block;
+    height:220px;
+    margin:auto;
+}
+.NavText{
+    display:block;
+    width:610px;
+    height:20px;
+    margin: auto;
+    padding-top:15px;
+    font-weight: 300;
+}
+.LinkStyle{
+    color:#fff;
+    text-decoration: none;
+    cursor:pointer;
+    text-decoration: none;
+}
+.LinkStyle:hover{
+    color:#de1a25;
+    text-decoration: none;
+}
+.LinkStyle2{
+    color:#de1a25;
+    font-size:18px;
+    text-decoration: none;
+    cursor:pointer;
+    font-weight: 400;
+}
+.LinkStyle2:hover{
+    color:#fff;
+    text-decoration: none;
+}
+.HeaderMain{
+    display: block;
+    width:100%;
+    height:77px;
+    background-color: 000;
+    padding-top:17px;
+}
+.SiteLogoImage{
+    display:block;
+    height:50px;
+    width:auto;
+    margin:auto;
+}
+.NavMain{
+    display:block;
+    height:52px;
+    width:100%;
+    margin: auto;
+}
+.FloatingSubHeaderSpacer{
+    display:none;
+}
+.NavLrgBttn{
+    display: none;   
+}
+.ButtonBKGColor{
+    background-color:#de1a25;
+}
+.FPWMobileMenu{
+    display:none;
+}
+.HeroTextBox{
+    display:block;
+    width:700px;
+    min-height:500px;
+    height:auto;
+    margin:auto;
+    padding-top:100px;
+}
+.HeroText{
+    display:block;
+    font-size: 24px;
+    font-weight:400;
+    margin-top:30px;
+    margin-bottom:30px;
+}
+.TitleText{
+    display:block;
+    font-size:55px;
+    font-weight: 300;
+    color:#333;
+    text-align: center;
+}
+.MainBttn{
+    display:block;
+    float:left;
+    text-align: center;
+    width:270px;
+    height:50px;
+    font-weight: 400;
+    text-decoration:none;
+    transition: background-color 0.2s, border 0.2s, color 0.2s;
+    cursor:pointer;
+    color:#fff;
+    border-radius:200px;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:14px;
+    font-size:20px;
+    background-color:#de1a25;
+    margin-right:20px;
+    margin-top:16px;
+}
+.MainBttn:hover{
+    background-color: #333;
+    color: #fff;
+}
+.HeroImageFront{
+    display: block;
+    width:841px;
+    position: absolute;
+    right:0px;
+    top:94px;
+}
+.HeroImageBack{
+    display: block;
+    Float:right;
+    width:841px;
+    margin-top:0px;
+}
+.BkgImage3{
+    background-image: url(img/sky2.jpg);
+    height:auto;
+    width:100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top:100px;
+}
+.NavText2{
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+}
+/* -----------------------------------------------------*/
+/*Custom Elements*/
+/* -----------------------------------------------------*/
+.MainBackgroundColor{
+    background-color: #35454d;
+}
+.HeaderBkgColor{
+    background-color: #35454d;
+    opacity: 0.97;
+}
+.NavBkgColor{
+    background-color: #35454d;
+    opacity: 0.97;
+}
+.LinkStyleNav{
+    color:#fff;
+    text-decoration: none;
+    cursor:pointer;
+    text-decoration: none;
+    font-size:16px;
+}
+.LinkStyleNav:hover{
+    color:#de1a25;
+    text-decoration: none;
+}
+.FloatingTextSpaceColor{
+    background-color: #35454d;
+}
+.NavTextColor{
+    color:#333;
+}
+.MainFooterColor{
+    background-color: #35454d;
+}
+.HeroTextColor{
+    color:#333;}
+.H2Color{
+    color:#333;
+}
+.MobileNavText:hover{
+    color:#de1a25;
+    text-decoration: none;
+}
+.CopyrightTextColor{
+    color:#999;
+}
+/* -----------------------------------------------------*/
+/*sticky nav*/
+/* -----------------------------------------------------*/
+.navbar{
+    display: block;
+    overflow: hidden;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    text-decoration: none;
+    border-radius: 0px;
+    border: 0px solid #fff;
+    z-index:1000;
+}
+.navbar2 {
+    display: block;
+    overflow: hidden;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    text-decoration: none;
+    border-radius: 0px;
+    border: 0px solid #fff;
+    z-index:1000;
+    height:77px;
+}
+.mainpagecontent {
+    margin-top: 0px;
+}
+#section2{
+    padding-top:127px;
+}
+#section4{
+    padding-top:127px;
+}
+/* -----------------------------------------------------*/
+/*Mobile Nav*/
+/* -----------------------------------------------------*/
+.MobileMenu{
+    display:none;
+    width:100%;
+    height: 100%;
+    background-color:#3b525d;
+    position:fixed;
+    right:0px;
+    top:0px;
+    z-index:1001;
+}
+.MobileHeader{
+    display: none;
+    width:100%;
+    height:70px;
+    top:0px;
+    left:0px;
+    font-size:40px;
+    font-weight:300;
+    padding-top:10px;
+    padding-left:20px;
+    color:#fff;
+    background-color:#35454d;
+}
+.MobileMenuRow{
+    display: none;
+    width:100%;
+    height:60px;
+    color:#fff;
+    font-size:24px;
+    padding-top:14px;
+    padding-left:20px;
+    border-top:1px solid #333;
+    cursor: pointer;
+}
+.MobileMenuRow:hover{
+    background-color:#333;
+    color:#fff;
+}
+/* -----------------------------------------------------*/
+/*Bkg Images*/
+/* -----------------------------------------------------*/
+.BkgImage1{
+    background-image: url(img/blkbkg.jpg);
+    min-height: 800px;
+    height:auto;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top:100px;
+    z-index:-1;
+}
+.BkgImage2{
+    background-image: url(img/sky2.jpg);
+    min-height: 100px;
+    height:auto;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top:100px;
+    z-index:-2;
+}
+.BkgImage3{
+    background-image: url(img/sky2.jpg);
+    min-height: 100px;
+    height:auto;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top:100px;
+    z-index:-2;
+}
+/* -----------------------------------------------------*/
+/*Footer*/
+/* -----------------------------------------------------*/
+.MainFooter{
+    display:block;
+    min-height:360px;
+    height:auto;
+    width:100%;
+    padding-bottom:12px;
+}
+.FollowUsText{
+    display: block;
+    font-size: 22px;
+    font-weight: 400;
+    color: #fff;
+    width:160px;
+    min-height:30px;
+    height: auto;
+    padding-top: 25px;
+    margin: auto;  
+}
+.SocialButtonSpace{
+    display: block;
+    width:199px;
+    display: block;
+    min-height:90px;
+    height: auto;
+    margin: auto;
+    margin-top:30px;
+    margin-bottom:30px;
+}
+.SBSML1{
+    display:block;
+    float:left;
+    height:70px;
+    }
+.SBSML2{
+    display:block;
+    float:left;
+    height:70px;
+    margin-left:15px;
+    }
+.InsertLogoSpaceFooter{
+    display:block;
+    height:80px;
+    margin: auto;
+    padding-top:20px;
+    padding-bottom:20px;  
+}
+.CopyrightText{
+    line-height: 130%; 
+    font-size:12px;
+    margin-bottom:10px;
+}
+
+.SBSML1{
+    display:block;
+    float:left;
+    height:90px;
+    margin-top:4px;
+    }
+.SBSML1:hover{
+    background:linear-gradient(
+      rgba(0, 186, 255, 0.9), 
+      rgba(0, 255, 234, 0.9)
+    ),url(img/bkg8.jpg);
+    border-radius: 200px;
+}
+.SBSML2{
+    display:block;
+    float:left;
+    height:90px;
+    margin-left:15px;
+    margin-top:4px;
+    }
+.SBSML2:hover{
+    background:linear-gradient(
+      rgba(255, 0, 168, 0.9), 
+      rgba(144, 0, 255, 0.9)
+    ),url(img/bkg8.jpg);
+    border-radius: 200px;
+    }
+/* -----------------------------------------------------*/
+/*Responsize Media*/
+/* -----------------------------------------------------*/
+@media screen and (max-width: 768px) {
+    
+    
+.FloatingTextSpace2{
+    padding-top:127px;
+    padding-bottom:50px;
+    }
+.BkgImage2Space{
+    display: block;
+    height:700px;
+    padding-top:60px;
+}
+.MobileMenuRow{
+    display:block;
+}
+.MobileHeader{
+    display: block;
+    }
+.MobileMenu{
+    display:block;
+}
+.HeroButtonBlock{
+    width:100%;
+    padding-left:20%;
+    padding-right:20%;
+    height:200px;
+    }
+.TextSideL{
+    display:block;
+    background-image: url(img/gears2.svg);
+    background-repeat: no-repeat;
+    float:none;
+    width:100%;
+    padding:20px;
+}
+.TextSideL1{
+    display:block;
+    background-image: url(img/SECURITY2.svg);
+    background-repeat: no-repeat;
+    float:none;
+    width:100%;
+    padding:40px;
+}
+.TextSideR{
+    display:none;
+    float:none;
+}
+
+.HeroText{
+    display: inline-block;
+    font-size: 18px;
+    font-weight:400;
+    margin-top:15px;
+    margin-bottom:15px;
+    width:100%;
+}
+.MainBttn{
+    width:100%;    
+    }
+.MainIcon{
+    margin-bottom:0px;
+    width:300px;
+}
+.MainIcon2{
+    margin-bottom:0px;
+    width:98%;
+    padding-left:2%;
+    padding-right:2%;
+    height:auto;
+}
+.BkgImage2{
+    padding-top:40px;
+    min-height:600px;
+}
+.TitleText{
+    width:100%;
+    height:60px;
+    font-size:40px;
+    margin:auto;
+    padding-top:0px;
+    margin-bottom:20px;
+    text-align: center;
+}
+.FPWMobileMenu{
+    display:inline-block;
+    position: fixed;
+    top:0px;
+    right:0px;
+    width:70px;
+    height:70px;
+    padding: 20px;
+    float:right;
+    cursor: pointer;
+}
+.FPWMobileMenu:hover{
+    background-color:#333;
+}
+.FloatingSubHeaderSpacer{
+    display:block;
+    width:320px;
+    height:50px;
+    margin:auto;
+    padding-top:11px;
+}
+.NavText{
+    display:none;
+}
+.NavLrgBttn{
+    display:block;
+    float:left;
+    text-align: center;
+    width:150px;
+    height:30px;
+    font-weight: 400;
+    text-decoration:none;
+    transition: background-color 0.2s, border 0.2s, color 0.2s;
+    cursor:pointer;
+    color:#fff;
+    border-radius:200px;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:9px;
+    font-size:14px;
+    border: none;
+}
+.NavLrgBttn:hover{
+    background-color: #333;
+    color: #fff;
+}
+.mainpagecontent {
+    margin-top: 90px;
+}
+.HeaderMain{
+        height:70px;
+        padding-top:12px;
+}
+.HeroTextBox{
+    display:block;
+    width:100%;
+    min-height:500px;
+    height:auto;
+    margin:0px;
+    padding:12px;
+}
+}
+@media screen and (max-width: 1200px) {
+ .FloatingInfoBlock{
+    width:100%;
+    height:auto;
+}
+}

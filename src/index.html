@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">                                 
+    <meta content="text/html;charset=UTF-8" http-equiv="Content-type">
+    <meta name="theme-color" content="#000">
+    
+    <title>ForgotPW | Safe and Secure Password Recovery</title>
+    
+    <link rel="stylesheet" href="css/style_forgotpw.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400" rel="stylesheet">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Images/favicon-16x16.png">
+    <link rel="mask-icon" href="Images/safari-pinned-tab.svg" color="#5bbad5">
+    
+    <script src="scripts/jquery-3.2.1.min.js"></script>
+    <script src="scripts/startswith.js"></script>
+    <script>
+        $(document).ready(function(){         
+          $("a").on('click', function(event) {
+            console.log(this.hash)
+            if (this.hash !== "" && !this.hash.startsWith('#/')) {
+              event.preventDefault();
+              var hash = this.hash;
+              $('html, body').animate({
+                scrollTop: $(hash).offset().top
+              }, 800, function(){
+                window.location.hash = hash;
+              });
+            } 
+          });
+        });
+
+        function navigateStore() {
+            window.location = 'https://app.forgotpw.com/#/store'
+        }
+        function navigateRetrieve() {
+            window.location = 'https://app.forgotpw.com/#/retrieve'
+        }
+    </script>
+</head>
+<body class="MainBackgroundColor">
+<!--MobileMenu-->
+    <div class="MobileMenu" style="display:none;" id="MobileMenu">
+        <div class="MobileHeader">Menu
+            <a href = "javascript:void(0)" onclick = "document.getElementById('MobileMenu').style.display='none';">
+                <img src="Images/close_icon.svg" class="FPWMobileMenu">
+            </a>
+        </div>
+        <a href="javascript:navigateStore()"><div class="MobileMenuRow">Store Password</div></a>
+        <a href="javascript:navigateRetrieve()"><div class="MobileMenuRow">Retrieve Password</div></a>
+        <a href="#section1" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('section1').style.display='block'" class="LinkStyle">
+            <div class="MobileMenuRow">How it works</div>
+        </a>
+        <a href="#section2" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('section2').style.display='block'" class="LinkStyle">
+            <div class="MobileMenuRow">Tips</div>
+        </a>
+        <a href="#section3" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('section3').style.display='block'" class="LinkStyle">
+            <div class="MobileMenuRow">Security</div>
+        </a>
+        <a href="#section4" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('section4').style.display='block'" class="LinkStyle">
+            <div class="MobileMenuRow">Pricing</div>
+        </a>
+        <a href="#section5" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('section5').style.display='block'" class="LinkStyle">
+            <div class="MobileMenuRow">FAQ</div>
+        </a>
+    </div>
+    <div class="mainpagecontent">
+<!--Header-->
+    <div class="navbar">
+        <div class="HeaderMain HeaderBkgColor">
+            <a href="index.html" class="LinkStyle">
+                <img src="Images/forgotpw-logo.svg"class="SiteLogoImage">
+            </a>
+            <a href = "javascript:void(0)" onclick = "document.getElementById('MobileMenu').style.display='block';">
+                <img src="Images/fpw_hamburger.svg" class="FPWMobileMenu">
+            </a>
+        </div>
+<!--Nav-->
+        <div class="NavMain NavBkgColor">
+            <div class="FloatingSubHeaderSpacer">
+                <a href="javascript:navigateStore()" target="_top">
+                    <div class="NavLrgBttn ButtonBKGColor" style="margin-right:10px;">
+                        <div>Store Password</div>
+                    </div>
+                </a>
+                <a href="javascript:navigateRetrieve()" target="_top">
+                    <div class="NavLrgBttn ButtonBKGColor">
+                        <div>Retrieve Password</div>
+                    </div>
+                </a>
+            </div>
+<!--SubNav-->          
+            <div class="NavText NavTextColor">
+                <a href="javascript:navigateStore()" class="LinkStyleNav">STORE PW</a>
+                &nbsp;&nbsp;&nbsp;
+                <a href="javascript:navigateRetrieve()" class="LinkStyleNav">RETRIEVE PW</a>
+                &nbsp;&nbsp;&nbsp;
+                <a href="#section1" class="LinkStyleNav" id="link1">HOW IT WORKS</a>
+                &nbsp;&nbsp;&nbsp;
+                <a href="#section2" class="LinkStyleNav" id="link2">TIPS</a>
+                &nbsp;&nbsp;&nbsp;
+                <a href="#section3" class="LinkStyleNav" id="link3">SECURITY</a>
+                &nbsp;&nbsp;&nbsp;
+                <a href="#section4" class="LinkStyleNav" id="link4">PRICING</a>
+                 &nbsp;&nbsp;&nbsp;
+                <a href="#section5" class="LinkStyleNav" id="link5">FAQ</a>
+            </div>
+        </div>
+    </div>
+<!--Hero Image-->
+    <div class="BkgImage1">
+        <div class="HeroTextBox">
+            <img src="Images/lock.svg" class="MainIcon">
+            <div class="TitleText">Forgot your password?</div>
+            <div class="HeroText HeroTextColor" style="text-align:center;margin-top:30px;">
+                (of course you did)<br>
+                We'll send it to your mobile phone via text message.
+            </div>
+            <div class="HeroButtonBlock">
+                <a href="javascript:navigateStore()"><div class="MainBttn">Store Password</div></a>
+                <a href="javascript:navigateRetrieve()"><div class="MainBttn">Retrieve Password</div></a>
+            </div>
+        </div>
+    </div>
+<!--How it works section-->
+    <div class="FloatingTextSpace2 FloatingTextSpaceColor" id="section1">
+        <div class="FloatingInfoBlock">
+            <div class="TextSideL">
+                <H1 class="H1Color" style="display:margin-bottom:12px;">How it works</H1><br>
+                <p>When you create a new password with any website, tell ForgotPW the password, we'll 
+                store it securely and when you need it, we can send the password to your mobile phone
+                via text message. All we need is your phone number, there is no need to create a new
+                user and password with us, and there is no software to install.</p>
+            </div>
+            <img src="Images/gears.svg"class="TextSideR">
+        </div>
+    </div>    
+<!--Password Tips Section-->        
+    <div class="BkgImage2" id="section2">
+        <div class="HeroTextBox">
+            <div class="TitleText">Recommended Usage</div>
+            <div class="HeroText HeroTextColor">
+                <img src="Images/example.svg" class="MainIcon2">
+                <br><br>
+                <p>For additional security, we recommend the following way to use our service. When you setup your password at any website you can store a part of that password with ForgotPW which we can send to your phone via text message whenever you need it. The other part of the password should be something common you remember in your head, the combination of which makes the full password. For example, say for Amazon.com you store "happykittens" as your password part with ForgotPW, and remember "11AA!!" which you add to the end of all your passwords. Your full password for Amazon becomes "happykittens11AA!!". </p>
+                <br><br>
+                <p>In this way you are not sharing your full password with anyone, and you still only have to remember one password. </p>
+                <br><br>
+                <H2>Choose your common password part carefully! </H2><br><br>
+                <p>For this system to work this is not something you can frequently change. It is probably best to include all the characters which some websites require in passwords such as a capital letter, a number, and a special character.</p>
+                <br><br>
+            </div>
+        </div>
+    </div>      
+<!--Security-->
+        <div class="FloatingTextSpace2 FloatingTextSpaceColor" id="section3">
+            <div class="FloatingInfoBlock">
+                <div class="TextSideL1">
+                    <H1 class="H1Color" style="display:margin-bottom:12px;">Security</H1><br>
+                    <p>We don't ask for your name, username, or email address. Your phone number is your only identity in our system, which we pseudo anonymise by creating a salted SHA-256 bit hash of your phone number and use the resulting token throughout the rest of our system in place of your phone number, where we store any data including your passwords. For example, +1-212-555-1212 becomes something like: UT37zdf322iuoVdkl@iR^GDSv4fgu93rsof3wdBJyJM.<br>Your passwords are encrypted with AES-256 bit encryption. All data is encrypted both in transit and at rest end to end in all parts of our system. </p>
+                </div>
+                <img src="Images/security.svg"class="TextSideR">
+            </div>
+        </div>    
+<!--Pricing Section-->        
+        <div class="BkgImage2" id="section4">
+            <div class="HeroTextBox">
+                <div class="TitleText">Pricing</div>
+                <div class="HeroText HeroTextColor">
+                    <img src="Images/free_forever.svg" class="MainIcon">
+                    <br><br>
+                    <H2>Store as many passwords as you want free forever</H2><br><br>
+                    <p>There is never any cost to store as many passwords as you like, we'll keep them stored securely forever, or as long as you'd like us to (you can delete your entire account at any time to permanently remove all your data).</p>
+                    <br><br>
+                    <img src="Images/onehundred.svg" class="MainIcon">
+                    <br><br>
+                    <H2>Your first 100 password retrievals are free</H2><br><br>
+                    <p>After that, to continue using ForgotPW pay just $2 per month (billed $24 annually) for an unlimited use plan.</p>
+                    <br><br>
+                    <img src="Images/card.svg" class="MainIcon">
+                    <br><br>
+                    <H2>No credit card required to start</H2><br><br>
+                    <p>In fact we don't even need your name or email address. Our system works entirely by using your mobile phone as a means of identification and authentication. Use our system entirely free without providing any payment information for the first 100 password retrievals. We’ll text you about payment options before your free usage is up.</p>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+<!--FAQ-->
+        <div class="FloatingTextSpace2 FloatingTextSpaceColor" id="section5">
+            <div class="FloatingInfoBlock" style="margin-bottom:20px;">
+                <div class="TextBothSides">
+                    <H1 class="H1Color" style="display:margin-bottom:12px;">FAQ</H1><br>
+                    <br><br>
+                    <H2>Why don't I have to log in to use ForgotPW?</H2><br><br>
+                    <p>Your passwords are never displayed on the screen, the only way to extract them is by text message to your mobile phone. Likewise, to store a password you will have to confirm by text message to your phone that you originated the request. This serves as a form of authentication instead of requiring yet one more password you're just going to forget.</p>
+                    <br><br>
+                    <H2>Are SMS text messages secure?</H2><br><br>
+                    <p>There are vulnerabilities in the <a href="https://en.wikipedia.org/wiki/Signalling_System_No._7" class="LinkStyle2">Signalling System No. 7 (SS7 network)</a>, which SMS relies on, which can potentially allow messges to be illegally viewed in transit by sophisticated hackers. This is what they're referring to in the movies when they say "we're not on a secure line".<br><br>Because of this we advise that you remember a common password part and combine that with all passwords you store with us <a href="#section2" class="LinkStyle2">(read more about our tips for increasing your security)</a>, or don't store passwords with us for financial websites such as your bank.<br><br>Even so, you are probably already relying on SMS text messages as a means of authentication to protect your most important data. If you use Google's Gmail for example, and supply your mobile phone as a backup means of entering your account, then a SMS text message alone will allow you to gain full access of your email account, and with access to your email account, you then have access to nearly all other of your accounts.</p>
+                    <br><br>
+                    <H2>Is this Open Source?</H2><br><br>
+                    <p>If you want to peek under the hood and see for yourself, our source code base is entirely open source, hosted at <a href="https://github.com/forgotpw.com" class="LinkStyle2">https://github.com/forgotpw.com</a></p>
+                    <br><br>
+                    <H2>Can I remove all my stored passwords?</H2><br><br>
+                    <p>Yes, at any time you can completely remove all data you have provided us.</p>
+                </div>
+            </div>
+        </div> 
+        <div class="BkgImage3"></div> 
+<!--Footer-->      
+        <div class="FollowUsText">&nbsp;&nbsp;&nbsp;&nbsp;Get in touch:</div>
+        <div class="SocialButtonSpace">
+            <a href="mailto:hello@forgotpw.com" class="LinkStyle"><img class="SBSML1" src="Images/email_icon.svg"></a>
+            <a href="https://github.com/forgotpw" class="LinkStyle"><img class="SBSML2"  src="Images/github.svg"></a>
+        </div>
+        <div class="MainFooter MainFooterColor">
+            <div style="width:100%;height:1px;border-bottom:1px solid#333;"></div>
+            <a href="http://www.mobiletek.com/">
+             <img class="InsertLogoSpaceFooter"src="Images/forgotpw-logo.svg">
+           </a>
+            <div style="width:100%;height:1px;border-bottom:1px solid#333;"></div>
+            <div class="NavText2 MainTextColor">
+                <a href="javascript:navigateStore()" class="LinkStyle">STORE PW</a>
+                &nbsp;&nbsp;&nbsp;
+                <a href="javascript:navigateRetrieve()" class="LinkStyle">RETRIEVE PW</a>
+                &nbsp;&nbsp;&nbsp;
+                <a href="#section1" class="LinkStyle" id="link1">HOW IT WORKS</a>
+                &nbsp;&nbsp;&nbsp;
+                <a href="#section2" class="LinkStyle" id="link2">TIPS</a>
+                &nbsp;&nbsp;&nbsp;
+                <a href="#section3" class="LinkStyle" id="link3">SECURITY</a>
+                &nbsp;&nbsp;&nbsp;
+                <a href="#section4" class="LinkStyle" id="link4">PRICING</a>
+                &nbsp;&nbsp;&nbsp;
+                <a href="#section5" class="LinkStyle" id="link5">FAQ</a>
+                &nbsp;&nbsp;&nbsp;
+                <div class="CopyrightTextColor CopyrightText">©2019 Commerce Song, LLC. All Rights Reserved
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
