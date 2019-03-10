@@ -76,19 +76,19 @@
         </div>
         <a href="javascript:navigateStore()"><div class="MobileMenuRow">Store Password</div></a>
         <a href="javascript:navigateRetrieve()"><div class="MobileMenuRow">Retrieve Password</div></a>
-        <a href="#section1" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('section1').style.display='block'" class="LinkStyle">
+        <a href="#howitworks" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('howitworks').style.display='block'" class="LinkStyle">
             <div class="MobileMenuRow">How it works</div>
         </a>
-        <a href="#section2" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('section2').style.display='block'" class="LinkStyle">
+        <a href="#tips" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('tips').style.display='block'" class="LinkStyle">
             <div class="MobileMenuRow">Tips</div>
         </a>
-        <a href="#section3" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('section3').style.display='block'" class="LinkStyle">
+        <a href="#security" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('security').style.display='block'" class="LinkStyle">
             <div class="MobileMenuRow">Security</div>
         </a>
-        <a href="#section4" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('section4').style.display='block'" class="LinkStyle">
+        <a href="#pricing" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('pricing').style.display='block'" class="LinkStyle">
             <div class="MobileMenuRow">Pricing</div>
         </a>
-        <a href="#section5" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('section5').style.display='block'" class="LinkStyle">
+        <a href="#faq" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('faq').style.display='block'" class="LinkStyle">
             <div class="MobileMenuRow">FAQ</div>
         </a>
     </div>
@@ -96,7 +96,7 @@
 <!--Header-->
     <div class="navbar">
         <div class="HeaderMain HeaderBkgColor">
-            <a href="index.html" class="LinkStyle">
+            <a href="/" class="LinkStyle">
                 <img src="Images/forgotpw-logo.svg"class="SiteLogoImage">
             </a>
             <a href = "javascript:void(0)" onclick = "document.getElementById('MobileMenu').style.display='block';">
@@ -123,15 +123,15 @@
                 &nbsp;&nbsp;&nbsp;
                 <a href="javascript:navigateRetrieve()" class="LinkStyleNav">RETRIEVE PW</a>
                 &nbsp;&nbsp;&nbsp;
-                <a href="#section1" class="LinkStyleNav" id="link1">HOW IT WORKS</a>
+                <a href="#howitworks" class="LinkStyleNav" id="link1">HOW IT WORKS</a>
                 &nbsp;&nbsp;&nbsp;
-                <a href="#section2" class="LinkStyleNav" id="link2">TIPS</a>
+                <a href="#tips" class="LinkStyleNav" id="link2">TIPS</a>
                 &nbsp;&nbsp;&nbsp;
-                <a href="#section3" class="LinkStyleNav" id="link3">SECURITY</a>
+                <a href="#security" class="LinkStyleNav" id="link3">SECURITY</a>
                 &nbsp;&nbsp;&nbsp;
-                <a href="#section4" class="LinkStyleNav" id="link4">PRICING</a>
+                <a href="#pricing" class="LinkStyleNav" id="link4">PRICING</a>
                  &nbsp;&nbsp;&nbsp;
-                <a href="#section5" class="LinkStyleNav" id="link5">FAQ</a>
+                <a href="#faq" class="LinkStyleNav" id="link5">FAQ</a>
             </div>
         </div>
     </div>
@@ -153,7 +153,7 @@
         </div>
     </div>
 <!--How it works section-->
-    <div class="FloatingTextSpace2 FloatingTextSpaceColor" id="section1">
+    <div class="FloatingTextSpace2 FloatingTextSpaceColor" id="howitworks">
         <div class="FloatingInfoBlock">
             <div class="TextSideL">
                 <H1 class="H1Color" style="display:margin-bottom:12px;">How it works</H1><br>
@@ -168,7 +168,7 @@
         </div>
     </div>    
 <!--Password Tips Section-->        
-    <div class="BkgImage2" id="section2">
+    <div class="BkgImage2" id="tips">
         <div class="HeroTextBox">
             <div class="TitleText">Recommended Usage</div>
             <div class="HeroText HeroTextColor">
@@ -185,7 +185,7 @@
         </div>
     </div>      
 <!--Security-->
-        <div class="FloatingTextSpace2 FloatingTextSpaceColor" id="section3">
+        <div class="FloatingTextSpace2 FloatingTextSpaceColor" id="security">
             <div class="FloatingInfoBlock">
                 <div class="TextSideL1">
                     <H1 class="H1Color" style="display:margin-bottom:12px;">Security</H1><br>
@@ -195,7 +195,7 @@
             </div>
         </div>    
 <!--Pricing Section-->        
-        <div class="BkgImage2" id="section4">
+        <div class="BkgImage2" id="pricing">
             <div class="HeroTextBox">
                 <div class="TitleText">Pricing</div>
                 <div class="HeroText HeroTextColor">
@@ -218,7 +218,7 @@
             </div>
         </div>
 <!--FAQ-->
-        <div class="FloatingTextSpace2 FloatingTextSpaceColor" id="section5">
+        <div class="FloatingTextSpace2 FloatingTextSpaceColor" id="faq">
             <div class="FloatingInfoBlock" style="margin-bottom:20px;">
                 <div class="TextBothSides">
                     <H1 class="H1Color" style="display:margin-bottom:12px;">FAQ</H1><br>
@@ -227,7 +227,7 @@
                     <p>Your passwords are never displayed on the screen, the only way to extract them is by text message to your mobile phone. Likewise, to store a password you will have to confirm by text message to your phone that you originated the request. This serves as a form of authentication instead of requiring yet one more password you're just going to forget.</p>
                     <br><br>
                     <H2>Are SMS text messages secure?</H2><br><br>
-                    <p>There are vulnerabilities in the <a href="https://en.wikipedia.org/wiki/Signalling_System_No._7" class="LinkStyle2">Signalling System No. 7 (SS7 network)</a>, which SMS relies on, which can potentially allow messges to be illegally viewed in transit by sophisticated hackers. This is what they're referring to in the movies when they say "we're not on a secure line".<br><br>Because of this we advise that you remember a common password part and combine that with all passwords you store with us <a href="#section2" class="LinkStyle2">(read more about our tips for increasing your security)</a>, or don't store passwords with us for financial websites such as your bank.<br><br>Even so, you are probably already relying on SMS text messages as a means of authentication to protect your most important data. If you use Google's Gmail for example, and supply your mobile phone as a backup means of entering your account, then a SMS text message alone will allow you to gain full access of your email account, and with access to your email account, you then have access to nearly all other of your accounts.</p>
+                    <p>There are vulnerabilities in the <a href="https://en.wikipedia.org/wiki/Signalling_System_No._7" class="LinkStyle2">Signalling System No. 7 (SS7 network)</a>, which SMS relies on, which can potentially allow messges to be illegally viewed in transit by sophisticated hackers. This is what they're referring to in the movies when they say "we're not on a secure line".<br><br>Because of this we advise that you remember a common password part and combine that with all passwords you store with us <a href="#tips" class="LinkStyle2">(read more about our tips for increasing your security)</a>, or don't store passwords with us for financial websites such as your bank.<br><br>Even so, you are probably already relying on SMS text messages as a means of authentication to protect your most important data. If you use Google's Gmail for example, and supply your mobile phone as a backup means of entering your account, then a SMS text message alone will allow you to gain full access of your email account, and with access to your email account, you then have access to nearly all other of your accounts.</p>
                     <br><br>
                     <H2>Is this Open Source?</H2><br><br>
                     <p>If you want to peek under the hood and see for yourself, our source code base is entirely open source, hosted at <a href="https://github.com/forgotpw.com" class="LinkStyle2">https://github.com/forgotpw.com</a></p>
@@ -255,15 +255,15 @@
                 &nbsp;&nbsp;&nbsp;
                 <a href="javascript:navigateRetrieve()" class="LinkStyle">RETRIEVE PW</a>
                 &nbsp;&nbsp;&nbsp;
-                <a href="#section1" class="LinkStyle" id="link1">HOW IT WORKS</a>
+                <a href="#howitworks" class="LinkStyle" id="link1">HOW IT WORKS</a>
                 &nbsp;&nbsp;&nbsp;
-                <a href="#section2" class="LinkStyle" id="link2">TIPS</a>
+                <a href="#tips" class="LinkStyle" id="link2">TIPS</a>
                 &nbsp;&nbsp;&nbsp;
-                <a href="#section3" class="LinkStyle" id="link3">SECURITY</a>
+                <a href="#security" class="LinkStyle" id="link3">SECURITY</a>
                 &nbsp;&nbsp;&nbsp;
-                <a href="#section4" class="LinkStyle" id="link4">PRICING</a>
+                <a href="#pricing" class="LinkStyle" id="link4">PRICING</a>
                 &nbsp;&nbsp;&nbsp;
-                <a href="#section5" class="LinkStyle" id="link5">FAQ</a>
+                <a href="#faq" class="LinkStyle" id="link5">FAQ</a>
                 &nbsp;&nbsp;&nbsp;
                 <div class="CopyrightTextColor CopyrightText">©2019 Commerce Song, LLC. All Rights Reserved
                 </div>
