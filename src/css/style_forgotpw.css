@@ -185,6 +185,14 @@ H2{
     color:#333;
     text-align: center;
 }
+.SubTitleText{
+    display:block;
+    font-size:30px;
+    font-weight: 300;
+    color:#333;
+    text-align: center;
+    margin-top:30px;
+}
 .MainBttn{
     display:block;
     float:left;
