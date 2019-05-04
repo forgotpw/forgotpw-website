@@ -10,7 +10,7 @@
     <title>ForgotPW | Safe and Secure Password Recovery</title>
     
     <link rel="stylesheet" href="css/style_forgotpw.css" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,600" rel="stylesheet">
     
     <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-32x32.png">
@@ -41,7 +41,6 @@
 
         gtag('config', 'AW-758048748');
     </script>
-
     <script>
         $(document).ready(function(){         
           $("a").on('click', function(event) {
@@ -74,8 +73,6 @@
                 <img src="Images/close_icon.svg" class="FPWMobileMenu">
             </a>
         </div>
-        <a href="javascript:navigateStore()"><div class="MobileMenuRow">Store Password</div></a>
-        <a href="javascript:navigateRetrieve()"><div class="MobileMenuRow">Retrieve Password</div></a>
         <a href="#howitworks" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('howitworks').style.display='block'" class="LinkStyle">
             <div class="MobileMenuRow">How it works</div>
         </a>
@@ -88,14 +85,17 @@
         <a href="#pricing" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('pricing').style.display='block'" class="LinkStyle">
             <div class="MobileMenuRow">Pricing</div>
         </a>
+        <a href="#alexa" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('alexa').style.display='block'" class="LinkStyle">
+            <div class="MobileMenuRow">Alexa</div>
+        </a>
         <a href="#faq" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('faq').style.display='block'" class="LinkStyle">
             <div class="MobileMenuRow">FAQ</div>
         </a>
     </div>
     <div class="mainpagecontent">
 <!--Header-->
-    <div class="navbar">
-        <div class="HeaderMain HeaderBkgColor">
+    <div class="navbar HeaderBkgColor">
+        <div class="HeaderMain">
             <a href="/" class="LinkStyle">
                 <img src="Images/forgotpw-logo.svg"class="SiteLogoImage">
             </a>
@@ -103,30 +103,21 @@
                 <img src="Images/fpw_hamburger.svg" class="FPWMobileMenu">
             </a>
         </div>
-<!--Nav-->
-        <div class="NavMain NavBkgColor">
-            <div class="FloatingSubHeaderSpacer">
-                <a href="javascript:navigateStore()" target="_top">
-                    <div class="NavLrgBttn ButtonBKGColor" style="margin-right:10px;">
-                        <div>Store Password</div>
-                    </div>
-                </a>
-                <a href="javascript:navigateRetrieve()" target="_top">
-                    <div class="NavLrgBttn ButtonBKGColor">
-                        <div>Retrieve Password</div>
-                    </div>
-                </a>
+<!--Mobile Only CTA-->
+        <a href="sms:18647778711"class="FPWMobileCTA">
+            <div class="FPWMobileCTASpacer">
+                <img src="Images/sms_sml.svg" class="FPWMobileCTAIcon">
+                <div class="FPWMobileCTAText">Tap here to start saving passwords via SMS<br>Text "hello" to get started</div>
             </div>
-<!--SubNav-->          
-            <div class="NavText NavTextColor">
+        </a>
+<!--Nav-->
+        <div class="NavMain">         
+            <div class="NavText">
                 <a href="#howitworks" class="LinkStyleNav" id="link1">HOW IT WORKS</a>
-                &nbsp;&nbsp;&nbsp;
                 <a href="#tips" class="LinkStyleNav" id="link2">TIPS</a>
-                &nbsp;&nbsp;&nbsp;
                 <a href="#security" class="LinkStyleNav" id="link3">SECURITY</a>
-                &nbsp;&nbsp;&nbsp;
                 <a href="#pricing" class="LinkStyleNav" id="link4">PRICING</a>
-                 &nbsp;&nbsp;&nbsp;
+                <a href="#alexa" class="LinkStyleNav" id="link6">ALEXA</a>
                 <a href="#faq" class="LinkStyleNav" id="link5">FAQ</a>
             </div>
         </div>
@@ -134,29 +125,27 @@
 <!--Hero Image-->
     <div class="BkgImage1">
         <div class="HeroTextBox">
-            <div class="TitleText">A Secure SMS Password Chat Bot</div>
-            <img src="Images/lock.svg" class="MainIcon">
-            <!-- <div class="SubTitleText">
-                You just need your phone, there's nothing to install
-            </div> -->
-            <div class="SubTitleText">
-                To get started just text "hello" to 
-                <!-- <img src="Images/chat.png" height="50"> -->
-                <a class="TextBttn" href="sms:18647778711">+1-864-777-8711</a>
-            </div>
+            <div class="TitleText">A New Fast and Secure Way<br>to Store Passwords</div>
+            <a class="SubTitleText" href="sms:18647778711">
+                Just tap here and text "hello" to 1-864-777-8711
+            </a>
+            <img src="Images/main_cell.svg" class="MainIconTest">
         </div>
     </div>
 <!--How it works section-->
     <div class="FloatingTextSpace2 FloatingTextSpaceColor" id="howitworks">
         <div class="FloatingInfoBlock">
             <div class="TextSideL">
-                <H1 class="H1Color" style="display:margin-bottom:12px;">How it works</H1><br>
-                <p>When you create a new password with any website, tell ForgotPW your phone number and
-                the password.  We'll store it securely and when you request it we send the password
-                to your phone via text message.  All we need is your phone number and your passwords,
-                we don't store your usernames.  We communicate with you by text message on your phone
-                so there is nothing to install and there is no need to create a user login with us, or
-                even give us your email address or your name.</p>
+                <H1 class="H1Color" style="display:margin-bottom:12px;">How does this work?</H1><br>
+                <p>ForgotPW is a password manager reinvented as a chat bot.  You interact with ForgotPW
+                    entirely through SMS text messageds on your phone.  When you create a new password
+                    with any website, text ForgotPW that you want to store the password.  We'll text
+                    you back a link to quickly and securely store the password.  Later you can text
+                    ForgotPW to get the password, and we'll text you back a link to view it securely.
+                    ForgotPW interacts with you entirely through SMS text messages on your phone,
+                    which is how we know we're always communicating directly with you.  ForgotPW
+                    does not ever know or store your name, username, or email address.  There is
+                    no software to install and there is no need to create a user login with ForgotPW.</p>
             </div>
             <img src="Images/gears.svg"class="TextSideR">
         </div>
@@ -164,8 +153,34 @@
 <!--Password Tips Section-->        
     <div class="BkgImage2" id="tips">
         <div class="HeroTextBox">
-            <div class="TitleText">Recommended Usage</div>
+            <div class="TitleText">How to create passwords that work best with ForgotPW</div>
             <div class="HeroText HeroTextColor">
+                <h2>Do: Use words you can easily type, like:</h2>
+                <p>happykittens</p>
+                <br><br>
+                <h2>Don't: Use random characters that are very hard to type:</h2>
+                <p>8r940ufHzieJJsqdW3io</p>
+                <br><br>
+                <p>
+                    Remember that you can only retrieve your passwords via text message, so you can only view them on your phone.  If you need to type in a password on your desktop computer, you won't be able to copy/paste, so you'll be viewing the password on your phone and typing it into your computer, so use words or phrases you can easily type rather than random characters.  Don't add numbers, upper case letters, and special characters here (keep reading!).
+                </p>
+                <br><br>
+                <h2>Do: Have a common string of special characters you will add to the end of every password (but don't tell us).</h2>
+                <p>happykittens11AA!!</p>
+                <br><br>
+                <p>
+                11AA!! is the common password you memorize and add to the end of all of your passwords but don't tell us.  So your password to Amazon might be happykittens11AA!! and your password to Walmart might be eastereggs11AA!!.  You store just happykittens and eastereggs with us.  The common portion you memorize should also cover the numbers, upper case letters and special character requirements that most sites have.
+                </p>
+                <br><br>
+                <div style="text-align: center">
+                    <img src="Images/example.svg" alt="Common password example" height="200"/>
+                </div>
+                <br><br>
+                <p>Choose your common password carefully!  For this system to work this is not something you can frequently change.</p>
+                <br><br>
+            </div>
+
+            <!-- <div class="HeroText HeroTextColor">
                 <img src="Images/example.svg" class="MainIcon2">
                 <br><br>
                 <p>For additional security, we recommend the following way to use our service. When you setup your password at any website you can store a part of that password with ForgotPW which we can send to your phone via text message whenever you need it. The other part of the password should be something common you remember in your head, the combination of which makes the full password. For example, say for Amazon.com you store "happykittens" as your password part with ForgotPW, and remember "11AA!!" which you add to the end of all your passwords. Your full password for Amazon becomes "happykittens11AA!!". </p>
@@ -175,20 +190,20 @@
                 <H2>Choose your common password part carefully! </H2><br><br>
                 <p>For this system to work this is not something you can frequently change. It is probably best to include all the characters which some websites require in passwords such as a capital letter, a number, and a special character.</p>
                 <br><br>
-            </div>
+            </div> -->
         </div>
     </div>      
 <!--Security-->
         <div class="FloatingTextSpace2 FloatingTextSpaceColor" id="security">
             <div class="FloatingInfoBlock">
                 <div class="TextSideL1">
-                    <H1 class="H1Color" style="display:margin-bottom:12px;">Security</H1><br>
+                    <H1 class="H1Color" style="display:margin-bottom:12px;">How secure is this?</H1><br>
                     <p>We don't ask for your name, username, or email address. Your phone number is your only identity in our system, which we pseudo anonymise by creating a salted SHA-256 bit hash of your phone number and use the resulting token throughout the rest of our system in place of your phone number, where we store any data including your passwords. For example, +1-212-555-1212 becomes something like: UT37zdf322iuoVdkl@iR^GDSv4fgu93rsof3wdBJyJM.<br>Your passwords are encrypted with AES-256 bit encryption. All data is encrypted both in transit and at rest end to end in all parts of our system. </p>
                 </div>
                 <img src="Images/security.svg"class="TextSideR">
             </div>
         </div>    
-<!--Pricing Section-->        
+<!--Pricing Section-->
         <div class="BkgImage2" id="pricing">
             <div class="HeroTextBox">
                 <div class="TitleText">Pricing</div>
@@ -231,10 +246,23 @@
                 </div>
             </div>
         </div> 
-        <div class="BkgImage3"></div> 
+<!--Alexa Section-->
+<div class="BkgImage2" id="alexa">
+    <div class="HeroTextBox">
+        <div class="TitleText">Request your passwords with your voice through Amazon Alexa</div>
+        <div class="HeroText HeroTextColor">
+            <h2>Coming Soon</h2>
+            <br><br>
+            <p>Soon you will be able to request your passwords with your voice by asking Amazon Alexa.</p>
+            <p>Say "Alexa, ask ForgotPW for my password to Amazon.com.", and ForgotPW will text a link to your phone
+            to retrieve your password.</p>
+            <br><br>
+        </div>
+    </div>
+</div>
 <!--Footer-->      
         <div class="FollowUsText">&nbsp;&nbsp;&nbsp;&nbsp;Get in touch:</div>
-        <div class="SocialButtonSpace">
+        <div class="SocialButtonSpace MainFooterColor">
             <a href="mailto:hello@forgotpw.com" class="LinkStyle"><img class="SBSML1" src="Images/email_icon.svg"></a>
             <a href="https://github.com/forgotpw" class="LinkStyle"><img class="SBSML2"  src="Images/github.svg"></a>
         </div>
