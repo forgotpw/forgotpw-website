@@ -157,6 +157,7 @@
             <div class="HeroText HeroTextColor">
                 <h2>Do: Use words you can easily type, like:</h2>
                 <p>happykittens</p>
+                <p>(I can already hear your objection, keep reading!)</p>
                 <br><br>
                 <h2>Don't: Use random characters that are very hard to type:</h2>
                 <p>8r940ufHzieJJsqdW3io</p>
@@ -166,7 +167,7 @@
                 </p>
                 <br><br>
                 <h2>Do: Have a common string of special characters you will add to the end of every password (but don't tell us).</h2>
-                <p>happykittens11AA!!</p>
+                <p>11AA!! (this common part is private)</p>
                 <br><br>
                 <p>
                 11AA!! is the common password you memorize and add to the end of all of your passwords but don't tell us.  So your password to Amazon might be happykittens11AA!! and your password to Walmart might be eastereggs11AA!!.  You store just happykittens and eastereggs with us.  The common portion you memorize should also cover the numbers, upper case letters and special character requirements that most sites have.
@@ -179,25 +180,18 @@
                 <p>Choose your common password carefully!  For this system to work this is not something you can frequently change.</p>
                 <br><br>
             </div>
-
-            <!-- <div class="HeroText HeroTextColor">
-                <img src="Images/example.svg" class="MainIcon2">
-                <br><br>
-                <p>For additional security, we recommend the following way to use our service. When you setup your password at any website you can store a part of that password with ForgotPW which we can send to your phone via text message whenever you need it. The other part of the password should be something common you remember in your head, the combination of which makes the full password. For example, say for Amazon.com you store "happykittens" as your password part with ForgotPW, and remember "11AA!!" which you add to the end of all your passwords. Your full password for Amazon becomes "happykittens11AA!!". </p>
-                <br><br>
-                <p>In this way you are not sharing your full password with anyone, and you still only have to remember one password. </p>
-                <br><br>
-                <H2>Choose your common password part carefully! </H2><br><br>
-                <p>For this system to work this is not something you can frequently change. It is probably best to include all the characters which some websites require in passwords such as a capital letter, a number, and a special character.</p>
-                <br><br>
-            </div> -->
         </div>
     </div>      
 <!--Security-->
         <div class="FloatingTextSpace2 FloatingTextSpaceColor" id="security">
             <div class="FloatingInfoBlock">
                 <div class="TextSideL1">
-                    <H1 class="H1Color" style="display:margin-bottom:12px;">How secure is this?</H1><br>
+                    <H1 class="H1Color" style="display:margin-bottom:12px;">Our Philosophy on Security</H1><br>
+                    <p>Good security that’s easy enough to actually use is better than great security that is too cumbersome to use.  If having the best security is too inconvenient, you won’t use it, rendering it useless.</p>
+                    <br><br>
+                    <p>If your password habits are less than ideal (you know if this is true about yourself), we’re here to present a solution where you can dramatically improve your level of security in a simple way that we think you’ll find easy enough to actually use.</p>
+                    <br><br>
+                    <H1 class="H1Color" style="display:margin-bottom:12px;">What security features are protecting my passwords?</H1><br>
                     <p>We don't ask for your name, username, or email address. Your phone number is your only identity in our system, which we pseudo anonymise by creating a salted SHA-256 bit hash of your phone number and use the resulting token throughout the rest of our system in place of your phone number, where we store any data including your passwords. For example, +1-212-555-1212 becomes something like: UT37zdf322iuoVdkl@iR^GDSv4fgu93rsof3wdBJyJM.<br>Your passwords are encrypted with AES-256 bit encryption. All data is encrypted both in transit and at rest end to end in all parts of our system. </p>
                 </div>
                 <img src="Images/security.svg"class="TextSideR">
@@ -232,15 +226,29 @@
                 <div class="TextBothSides">
                     <H1 class="H1Color" style="display:margin-bottom:12px;">FAQ</H1><br>
                     <br><br>
+ 
                     <H2>Why don't I have to log in to use ForgotPW?</H2><br><br>
                     <p>Your passwords are never displayed on the screen, the only way to extract them is by text message to your mobile phone. Likewise, to store a password you will have to confirm by text message to your phone that you originated the request. This serves as a form of authentication instead of requiring yet one more password you're just going to forget.</p>
                     <br><br>
+
                     <H2>Are SMS text messages secure?</H2><br><br>
-                    <p>There are vulnerabilities in the <a href="https://en.wikipedia.org/wiki/Signalling_System_No._7" class="LinkStyle2">Signalling System No. 7 (SS7 network)</a>, which SMS relies on, which can potentially allow messges to be illegally viewed in transit by sophisticated hackers. This is what they're referring to in the movies when they say "we're not on a secure line".<br><br>Because of this we advise that you remember a common password part and combine that with all passwords you store with us <a href="#tips" class="LinkStyle2">(read more about our tips for increasing your security)</a>, or don't store passwords with us for financial websites such as your bank.<br><br>Even so, you are probably already relying on SMS text messages as a means of authentication to protect your most important data. If you use Google's Gmail for example, and supply your mobile phone as a backup means of entering your account, then a SMS text message alone will allow you to gain full access of your email account, and with access to your email account, you then have access to nearly all other of your accounts.</p>
+                    <p>There are vulnerabilities in the <a href="https://en.wikipedia.org/wiki/Signalling_System_No._7" class="LinkStyle2">Signalling System No. 7 (SS7 network)</a>, which SMS relies on, which can potentially allow messges to be illegally viewed in transit by sophisticated hackers. This is what they're referring to in the movies when they say "we're not on a secure line".  Because of this we advise that you remember a common password and combine that with all passwords you store with us <a href="#tips" class="LinkStyle2">(read more)</a>.</p>
                     <br><br>
+                    <p>The reality is we are already depending on SMS text messages as a means of authentication to secure our most important accounts.  If you use Google's Gmail for example, and supply your mobile phone as a backup means of entering your account, then a SMS text message alone will allow you to gain full access of your email account, and with access to your email account, you then have access to nearly all other of your accounts.  Also consider that email is less secure than SMS text messages, and we rely on a link being sent in email to reset your password to any other account you are already using.</p>
+                    <br><br>
+
+                    <H2>If someone else gains access to my phone, doesn't that mean they can gain access to my passwords?</H2><br><br>
+                    <p>If you're following our recommendation to use a common password, even if someone were to gain access to your phone, they would not know your complete password.  You may also be using things like your browser’s ability to remember your passwords.  If you step away from your computer you have the same concern.  Most people however have their phones on them at all times, it is the one thing you are almost never without.</p>
+                    <br><br>
+
+                    <H2>Aren't the readable passwords you recommend (like “happykitties”) less secure than long strings of random characters?</H2><br><br>
+                    <p>When combined with a common password like 11AA!!, the passwords are more secure.  Additionally, many websites have measures against brute force attacks such as locking your account out after a number of failed attempts.  You can also take into account the importance of the site you are storing a password for, and if you like you can use a more difficult to type password for your brokerage account for example.</p>
+                    <br><br>
+
                     <H2>Is this Open Source?</H2><br><br>
                     <p>If you want to peek under the hood and see for yourself, our source code base is entirely open source, hosted at <a href="https://github.com/forgotpw" class="LinkStyle2">https://github.com/forgotpw</a></p>
                     <br><br>
+
                     <H2>Can I remove all my stored passwords?</H2><br><br>
                     <p>Yes, at any time you can completely remove all data you have provided us.</p>
                 </div>
