@@ -17,9 +17,9 @@ else
 fi
 
 # empty the bucket first
-aws s3 rm s3://$SUBDOMAIN.forgotpw.com --recursive
+aws s3 rm s3://$SUBDOMAIN.rosa.bot --recursive
 
 aws s3 cp \
   ./src/ \
-  s3://$SUBDOMAIN.forgotpw.com/ \
+  s3://$SUBDOMAIN.rosa.bot/ \
   --recursive

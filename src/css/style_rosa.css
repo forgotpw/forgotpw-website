@@ -13,6 +13,28 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+.ExamplePass{
+    display: block;
+    height:200px;
+    width:auto;
+    max-width: 400px;
+    margin:auto;
+}
+.PolicyBlock{
+    display: block;
+    height:auto;
+    min-height:900px;
+    width:768px;
+    margin:auto;
+    margin-top:200px;
+}
+.RFooterLogoSpace{
+    display: block;
+    height:95px;
+    width:100%;
+    background: rgb(255,0,236);
+    background: linear-gradient(45deg, rgba(255,0,236,1) 0%, rgba(226,60,70,1) 76%);
+}
 a{
     text-decoration: none;
 }
@@ -28,6 +50,7 @@ p{
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
+    color:#333;
 }
 H1{
     display:block;
@@ -40,6 +63,7 @@ H2{
     width: auto;
     font-size:26px;
     font-weight: 400;
+    color:#333;
 }
 .HeroButtonBlock{
     display: block;
@@ -100,9 +124,15 @@ H2{
 }
 .MainIconTest{
     display: block;
-    width:100%;
+    width:768px;
+   
     margin:auto;
-    margin-bottom:30px;
+}
+.MainIconTest2{
+    display: block;
+    width:768px;
+    height:600px;
+    margin:auto;
 }
 .MainIcon2{
     display: block;
@@ -117,10 +147,11 @@ H2{
     font-weight: 300;
 }
 .LinkStyle{
-    color:#fff;
+    color:#333;
     text-decoration: none;
     cursor:pointer;
     text-decoration: none;
+     font-size:16px;
 }
 .LinkStyle:hover{
     color:#de1a25;
@@ -140,13 +171,13 @@ H2{
 .HeaderMain{
     display: block;
     width:100%;
-    height:77px;
+    height:100px;
     background-color: 000;
     padding-top:17px;
 }
 .SiteLogoImage{
     display:block;
-    height:50px;
+    height:80px;
     width:auto;
     margin:auto;
 }
@@ -174,7 +205,6 @@ H2{
     min-height:20px;
     height:auto;
     margin:auto;
-    margin-bottom:40px;
 }
 .HeroText{
     display:block;
@@ -197,20 +227,23 @@ H2{
     font-weight: 400;
     width:500px;
     height:auto;
-    color:#333;
     text-align: center;
     padding-top:10px;
     padding-bottom:10px;
-    background-color:#de1a25;
+    border:1px solid #e23c46;
     margin:auto;
     border-radius: 200px;
-    color: #fff;
+    color: #333;
     line-height: 1.55;
+    transition: background-color 0.9s ease;
+    margin-bottom:40px;
     
 }
 .SubTitleText:hover{
-    background-color:#de1a25;
-    opacity:0.85;
+    transition: background-color 0.9s ease;
+    background-color:#f918c5;
+    color:#fff;
+    border:1px solid #fff;
 }
 .MainBttn{
     display:block;
@@ -293,34 +326,30 @@ H2{
     min-height:60px;
     height:auto;
     width:100%;
-    background-color: #de1a25;
     text-decoration: none;
     cursor: pointer;
-    transition: background-color 0.8s ease;
 }
-.FPWMobileCTA:hover{
-    background-color:#990000;
-}
-
-
-
-
 .FPWMobileCTASpacer{
     display: block;
     width:342px;
     height:60px;
     margin:auto;
+    transition: background-color 0.8s ease;
+    border-radius: 300px;
+}
+.FPWMobileCTASpacer:hover{
+    background-color: #d84b84;
+    border-radius: 300px;
 }
 .FPWMobileCTAText{
     display:block;
- 
     float:left;
     color:#fff;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 12px;
     text-align: left;
     line-height:1.7;
-    margin-top:6px;
+    margin-top:10px;
 }
 .FPWMobileCTAIcon{
     display: block;
@@ -333,11 +362,12 @@ H2{
 /*Custom Elements*/
 /* -----------------------------------------------------*/
 .MainBackgroundColor{
-    background-color: #35454d;
+    background-color: #fff;
 }
 .HeaderBkgColor{
-    background-color: #35454d;
-    opacity: 0.94;
+    background: rgb(255,0,236);
+    background: linear-gradient(45deg, rgba(255,0,236,1) 0%, rgba(226,60,70,1) 76%);
+    opacity:0.95;
 }
 .NavBkgColor{
     background-color: #35454d;
@@ -356,32 +386,35 @@ H2{
     font-size:16px;
     text-align: center;
     font-weight: 300;
-    transition: 0.8s;
+    transition: 0.9s;
+    font-weight:400;
 }
 .LinkStyleNav:hover{
-    background-color:#de1a25;
+    background-color:#fff;
+    opacity: 0.7;
+    color:#e23c46;
     text-decoration: none;
 }
 .FloatingTextSpaceColor{
-    background-color: #35454d;
+    background-color: #f9f9f9;
 }
 .NavTextColor{
     color:#333;
 }
 .MainFooterColor{
-    background-color: #35454d;
+    background-color: #f9f9f9
 }
 .HeroTextColor{
     color:#333;}
-.H2Color{
-    color:#333;
-}
 .MobileNavText:hover{
     color:#de1a25;
     text-decoration: none;
 }
 .CopyrightTextColor{
     color:#999;
+}
+.H1Color{
+    color:#333;
 }
 /* -----------------------------------------------------*/
 /*sticky nav*/
@@ -427,7 +460,7 @@ H2{
     display:none;
     width:100%;
     height: 100%;
-    background-color:#3b525d;
+    background-color:#fff;
     position:fixed;
     right:0px;
     top:0px;
@@ -444,23 +477,25 @@ H2{
     padding-top:10px;
     padding-left:20px;
     color:#fff;
-    background-color:#35454d;
+    background: rgb(255,0,236);
+    background: linear-gradient(45deg, rgba(255,0,236,1) 0%, rgba(226,60,70,1) 76%);
 }
 .MobileMenuRow{
     display: none;
     width:100%;
     min-height:60px;
     height:auto;
-    color:#fff;
+    color:#333;
     font-size:24px;
     padding-top:14px;
     padding-left:20px;
     padding-bottom:14px;
-    border-top:1px solid #333;
+    border-top:1px solid #f9f9f9;
     cursor: pointer;
 }
 .MobileMenuRow:hover{
-    background-color:#de1a25;
+    background: rgb(255,0,236);
+    background: linear-gradient(45deg, rgba(255,0,236,1) 0%, rgba(226,60,70,1) 76%);
     transition: 0.8s;
     color:#fff;
 }
@@ -469,19 +504,15 @@ H2{
 /*Bkg Images*/
 /* -----------------------------------------------------*/
 .BkgImage1{
-    background-image: url(img/blkbkg.jpg);
+    background-color: #fff;
     display: block;
-    margin-top:129px;
-    min-height: 840px;
+    margin-top:152px;
+    min-height: 640px;
     height:auto;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     z-index:-1;
 }
 .BkgImage2{
-    background-image: url(img/sky2.jpg);
+    background-color:#fff;
     min-height: 100px;
     height:auto;
     background-attachment: fixed;
@@ -533,23 +564,11 @@ H2{
     margin-top:30px;
     margin-bottom:30px;
 }
-.SBSML1{
-    display:block;
-    float:left;
-    height:70px;
-    }
-.SBSML2{
-    display:block;
-    float:left;
-    height:70px;
-    margin-left:15px;
-    }
 .InsertLogoSpaceFooter{
     display:block;
     height:80px;
     margin: auto;
-    padding-top:20px;
-    padding-bottom:20px;  
+    padding-top:10px;
 }
 .CopyrightText{
     line-height: 130%; 
@@ -564,11 +583,13 @@ H2{
     margin-top:4px;
     }
 .SBSML1:hover{
+    padding:10px;
     background:linear-gradient(
-      rgba(0, 186, 255, 0.9), 
-      rgba(0, 255, 234, 0.9)
+      rgba(250, 20, 212, 1), 
+      rgba(230, 58, 99, 1)
     ),url(img/bkg8.jpg);
     border-radius: 200px;
+    transition: 1s;
 }
 .SBSML2{
     display:block;
@@ -578,26 +599,86 @@ H2{
     margin-top:4px;
     }
 .SBSML2:hover{
+    padding:10px;
     background:linear-gradient(
-      rgba(255, 0, 168, 0.9), 
-      rgba(144, 0, 255, 0.9)
+      rgba(250, 20, 212, 1), 
+      rgba(230, 58, 99, 1)
     ),url(img/bkg8.jpg);
     border-radius: 200px;
+    transition: 1s;
     }
+strong{
+    font-family: 'Raleway', sans-serif;
+    font-size:20px;
+    font-weight:400px;
+}
+li, ul{
+    font-size:20px;
+    margin-bottom:10px;
+}
+h3,h4{
+    font-size:20px;
+}
+a{
+    font-size:20px;
+    color:#fb15d4;
+}
 /* -----------------------------------------------------*/
 /*Responsive Media*/
 /* -----------------------------------------------------*/
-@media screen and (max-width: 768px) {
-.SubTitleText{
+@media screen and (max-width: 342px) {
+.FPWMobileCTASpacer{
+    display: block;
     width:100%;
-    border-radius: 0px;
+}
+}
+@media screen and (max-width: 400px) {
+.ExamplePass{
+    display: block;
+    height:auto;
+    width:100%;
+    max-width:none;
+    margin:auto;
+    padding:10px;
+}
+}
+@media screen and (max-width: 768px) {
+.PolicyBlock{
+    width:100%;
+    padding:20px;
+}
+.MainIconTest{
+    display: block;
+    width:100%;
+    margin:auto;
+}
+.MainIconTest2{
+    display: block;
+    width:100%;
+    height:auto;
+    margin:auto;
+}
+.TextBothSides{
+    padding-top:0px;
+}
+.SiteLogoImage{
+    display:block;
+    height:50px;
+    width:auto;
+    margin:auto;
+}
+.SubTitleText{
+    width:90%;
+    padding:20px;
+   
+ 
 }
 .FPWMobileCTA{
     display: block;
     }
 .BkgImage1{
     margin-top:129px;
-    min-height: 500px;
+    min-height: 400px;
 }
 .NavMain{
     display:none;
@@ -628,11 +709,15 @@ H2{
     }
 .TextSideL{
     display:block;
-    background-image: url(img/gears2.svg);
-    background-repeat: no-repeat;
     float:none;
     width:100%;
     padding:20px;
+}
+.TextSideR{
+    display:block;
+    float:none;
+    width:100%;
+    padding:40px;
 }
 .TextSideL1{
     display:block;
@@ -642,17 +727,13 @@ H2{
     width:100%;
     padding:40px;
 }
-.TextSideR{
-    display:none;
-    float:none;
-}
-
 .HeroText{
     display: inline-block;
     font-size: 18px;
     font-weight:400;
     margin-top:15px;
     margin-bottom:15px;
+    padding:20px;
     width:100%;
 }
 .MainBttn{
@@ -680,6 +761,8 @@ H2{
     font-size:44px;
     margin:auto;
     padding-top:20px;
+    padding-left:20px;
+    padding-right:20px;
     margin-top:20px;
     margin-bottom:20px;
     text-align: center;
@@ -696,7 +779,7 @@ H2{
     cursor: pointer;
 }
 .FPWMobileMenu:hover{
-    background-color:#de1a25;
+    background-color:#d84b84;
     transition: 0.8s;
 }
 .FloatingSubHeaderSpacer{
@@ -736,7 +819,6 @@ H2{
         padding-top:12px;
 }
 .HeroTextBox{
-    padding:12px;
     width:100%;
 }
 }

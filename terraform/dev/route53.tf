@@ -1,12 +1,12 @@
 # route53 zone created in forgotpw-infrastructure git repo
 data "aws_route53_zone" "www" {
-  name         = "${var.website_subdomain}.forgotpw.com"
+  name         = "${var.website_subdomain}.rosa.bot"
   private_zone = false
 }
 
 resource "aws_route53_record" "www" {
   zone_id = "${data.aws_route53_zone.www.zone_id}"
-  name    = "${var.website_subdomain}.forgotpw.com"
+  name    = "${var.website_subdomain}.rosa.bot"
   type    = "A"
 
   # alias {
@@ -23,7 +23,7 @@ resource "aws_route53_record" "www" {
 
 resource "aws_route53_record" "www-ipv6" {
   zone_id = "${data.aws_route53_zone.www.zone_id}"
-  name    = "${var.website_subdomain}.forgotpw.com"
+  name    = "${var.website_subdomain}.rosa.bot"
   type    = "AAAA"
 
   # alias {
