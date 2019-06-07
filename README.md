@@ -1,6 +1,8 @@
 # Forgotpw Website
 
-Static marketing front-end website for www.forgotpw.com.
+**NOTE: Rosa (www.rosa.bot) is the new name for ForgotPW**
+
+Static marketing front-end website for www.rosa.bot.
 
 ## Deploy - Dev
 
