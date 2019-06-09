@@ -57,6 +57,13 @@
           });
         });
     </script>
+    <script>
+        function fireAdWordsConversion() {
+            console.log('Firing AdWords conversion ...');
+            gtag('event', 'conversion', {'send_to': 'AW-758048748/y9JsCMaxh6IBEOzPu-kC'});
+            return true;
+        }
+    </script>
 </head>
 <body class="MainBackgroundColor">
 <!--MobileMenu-->
@@ -90,14 +97,14 @@
     <div class="navbar HeaderBkgColor">
         <div class="HeaderMain">
             <a href="/" class="LinkStyle">
-                <img src="Images/rosa-logo.svg"class="SiteLogoImage">
+                <img src="Images/rosa-logo.svg" class="SiteLogoImage">
             </a>
             <a href = "javascript:void(0)" onclick = "document.getElementById('MobileMenu').style.display='block';">
                 <img src="Images/fpw_hamburger.svg" class="FPWMobileMenu">
             </a>
         </div>
 <!--Mobile Only CTA-->
-        <a href="sms:18647778711"class="FPWMobileCTA">
+        <a href="sms:18647778711" onclick="return fireAdWordsConversion();" class="FPWMobileCTA">
             <div class="FPWMobileCTASpacer">
                 <img src="Images/sms_sml.svg" class="FPWMobileCTAIcon">
                 <div class="FPWMobileCTAText">Tap here to start saving passwords via SMS.<br>Text "hello" to get started</div>
@@ -119,7 +126,7 @@
     <div class="BkgImage1">
         <div class="HeroTextBox">
             <div class="TitleText">A New Fast and Secure Way<br>to Store Passwords</div>
-            <a class="SubTitleText" href="sms:18647778711">
+            <a class="SubTitleText" href="sms:18647778711" onclick="return fireAdWordsConversion();">
                 Just tap here and text "hello" to 1-864-777-8711
             </a>
             <img src="Images/main_cell.svg" class="MainIconTest">
