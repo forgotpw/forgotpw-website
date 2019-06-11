@@ -23,3 +23,11 @@ aws s3 cp \
   ./src/ \
   s3://$SUBDOMAIN.rosa.bot/ \
   --recursive
+
+echo "Uploading rosa.vcf ..."
+aws s3api put-object \
+  --bucket $SUBDOMAIN.rosa.bot \
+  --key rosa.vcf \
+  --body ./src/rosa.vcf \
+  --content-type text/vcard \
+  --content-disposition 'attachment; name="Rosa"; filename="rosa.vcf"'
