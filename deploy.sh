@@ -31,3 +31,11 @@ aws s3api put-object \
   --body ./src/rosa.vcf \
   --content-type text/vcard \
   --content-disposition 'attachment; name="Rosa"; filename="rosa.vcf"'
+
+# add the same .vcf file with "rosa.vcf." in case the period is picked up as part of the filename
+aws s3api put-object \
+  --bucket $SUBDOMAIN.rosa.bot \
+  --key rosa.vcf. \
+  --body ./src/rosa.vcf \
+  --content-type text/vcard \
+  --content-disposition 'attachment; name="Rosa"; filename="rosa.vcf"'
