@@ -57,13 +57,38 @@
           });
         });
     </script>
+
+    <!-- Facebook Pixel Code -->
     <script>
-        function fireAdWordsConversion() {
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '338042973502552');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=338042973502552&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
+
+    <!-- Custom scripts -->
+    <script>
+        function fireConversionScripts() {
             console.log('Firing AdWords conversion ...');
             gtag('event', 'conversion', {'send_to': 'AW-758048748/y9JsCMaxh6IBEOzPu-kC'});
+
+            console.log('Firing Facebook conversion ...');
+            fbq('track', 'Contact');
+
             return true;
         }
     </script>
+
 </head>
 <body class="MainBackgroundColor">
 <!--MobileMenu-->
@@ -104,7 +129,7 @@
             </a>
         </div>
 <!--Mobile Only CTA-->
-        <a href="sms:18647778711" onclick="return fireAdWordsConversion();" class="FPWMobileCTA">
+        <a href="sms:18647778711" onclick="return fireConversionScripts();" class="FPWMobileCTA">
             <div class="FPWMobileCTASpacer">
                 <img src="Images/sms_sml.svg" class="FPWMobileCTAIcon">
                 <div class="FPWMobileCTAText">Tap here to start saving passwords via SMS.<br>Text "hello" to get started</div>
@@ -126,7 +151,7 @@
     <div class="BkgImage1">
         <div class="HeroTextBox">
             <div class="TitleText">A New Fast and Secure Way<br>to Store Passwords</div>
-            <a class="SubTitleText" href="sms:18647778711" onclick="return fireAdWordsConversion();">
+            <a class="SubTitleText" href="sms:18647778711" onclick="return fireConversionScripts();">
                 Just tap here and text "hello" to 1-864-777-8711
             </a>
             <img src="Images/main_cell.svg" class="MainIconTest">

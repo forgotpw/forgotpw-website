@@ -9,11 +9,10 @@ Static marketing front-end website for www.rosa.bot.
 Apply Terraform, then execute deployment script.
 
 ```shell
+# pip install iam-starter
+
 export AWS_ENV="dev" && export PROFILE="fpw$AWS_ENV"
 
-chmod +x ./deploy.sh
-
-# pip install iam-starter
 iam-starter \
    --profile $PROFILE \
    --command ./deploy.sh
@@ -22,11 +21,10 @@ iam-starter \
 ## Deploy - Prod
 
 ```shell
+# pip install iam-starter
+
 export AWS_ENV="prod" && export PROFILE="fpw$AWS_ENV"
 
-chmod +x ./deploy.sh
-
-# pip install iam-starter
 iam-starter \
    --profile $PROFILE \
    --command ./deploy.sh
