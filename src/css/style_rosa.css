@@ -117,6 +117,10 @@ H2{
     height:auto;
     color:#fff;
 }
+.MainVideoThumbnail{
+    display: block;
+    margin:auto;
+}
 .MainIcon{
     display: block;
     height:220px;
