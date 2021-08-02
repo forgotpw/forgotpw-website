@@ -215,6 +215,15 @@ H2{
     font-size: 24px;
     font-weight:400;
 }
+.PhoneLinkText{
+    font-size:36px;
+    font-weight: 600;
+    width:100%;
+    color:#333;
+    text-align: center;
+    padding-top:60px;
+    margin-bottom:40px;
+}
 .TitleText{
     display: block;
     font-size:44px;
