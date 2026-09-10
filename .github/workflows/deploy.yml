@@ -1,0 +1,74 @@
+name: Deploy Rosa website
+
+on:
+  push:
+    branches:
+      - develop
+      - master
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: rosa-website-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  deploy-development:
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: development
+      url: https://www-dev.rosa.bot
+    steps:
+      - name: Check out the deployed revision
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.sha }}
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID_DEV }}:role/github-actions-deploy-dev
+          aws-region: us-east-1
+
+      - name: Preview development deployment
+        env:
+          AWS_ENV: dev
+        run: ./deploy.sh --dry-run
+
+      - name: Deploy development website
+        env:
+          AWS_ENV: dev
+        run: ./deploy.sh --apply
+
+  deploy-production:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: production
+      url: https://www.rosa.bot
+    steps:
+      - name: Check out the deployed revision
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.sha }}
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID_PROD }}:role/github-actions-deploy-prod
+          aws-region: us-east-1
+
+      - name: Preview production deployment
+        env:
+          AWS_ENV: prod
+        run: ./deploy.sh --dry-run
+
+      - name: Deploy production website
+        env:
+          AWS_ENV: prod
+        run: ./deploy.sh --apply

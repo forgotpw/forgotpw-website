@@ -1,25 +1,23 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Manual website deployment. See README.md for dev/prod examples.
+# Website deployment entrypoint for local use and GitHub Actions.
 # Preview is the default; --apply uploads files and invalidates CloudFront.
 mode="${1:---dry-run}"
 if [[ $# -gt 1 || ( "$mode" != "--dry-run" && "$mode" != "--apply" ) ]]; then
-  echo "Usage: AWS_ENV=dev|prod AWS_PROFILE=csdev|csprod ./deploy.sh [--dry-run|--apply]" >&2
+  echo "Usage: AWS_ENV=dev|prod [AWS_PROFILE=csdev|csprod] ./deploy.sh [--dry-run|--apply]" >&2
   exit 1
 fi
 : "${AWS_ENV:?Set AWS_ENV to dev or prod}"
-: "${AWS_PROFILE:?Export AWS_PROFILE=csdev or csprod}"
 case "$AWS_ENV" in
   dev) bucket="www-dev.rosa.bot"; expected_account="478543871670"; distribution="E1FOKZO6RWD12W" ;;
   prod) bucket="www.rosa.bot"; expected_account="162109821699"; distribution="E2IS3O9VPVJFGQ" ;;
   *) echo "AWS_ENV must be dev or prod" >&2; exit 1 ;;
 esac
-if [[ "$AWS_PROFILE" != "cs${AWS_ENV}" ]]; then
+if [[ -n "${AWS_PROFILE:-}" && "${AWS_PROFILE:-}" != "cs${AWS_ENV}" ]]; then
   echo "Use AWS_PROFILE=cs${AWS_ENV} for AWS_ENV=${AWS_ENV}" >&2
   exit 1
 fi
-export AWS_PROFILE
 export AWS_PAGER=""
 site_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/src"
 for required in index.html privacy.html rosa.vcf css/rosa.css scripts/rosa.js Images/rosa-logo.svg Images/rosa-explainer-poster.jpg videos/rosa-explainer-v1.mp4 videos/rosa-explainer-en.vtt; do

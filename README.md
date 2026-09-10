@@ -12,9 +12,9 @@ Open [the local preview](http://127.0.0.1:8794). Check the homepage and `privacy
 
 The homepage uses `src/css/rosa.css` and `src/scripts/rosa.js`. The original Rosa logo is retained. The existing analytics/ad identifiers and SMS conversion events are preserved on the homepage. The published privacy policy wording and effective date are retained with updated layout/navigation; it still contains legacy ForgotPW references and needs a separate policy review before a broader relaunch.
 
-## Hosting and manual deployment
+## Hosting and deployment
 
-Rosa already uses S3 static files behind CloudFront, matching the VillageMetrics hosting model. This refresh reuses those existing resources. No GitHub Actions CI/CD or infrastructure migration is included.
+Rosa already uses S3 static files behind CloudFront, matching the VillageMetrics hosting model. The deployment workflow reuses those existing resources; it does not apply the legacy Terraform configuration or migrate infrastructure.
 
 Verified with AWS read-only queries on September 10, 2026:
 
@@ -23,7 +23,36 @@ Verified with AWS read-only queries on September 10, 2026:
 | Dev | `csdev` | `478543871670` | `www-dev.rosa.bot` | `E1FOKZO6RWD12W` |
 | Prod | `csprod` | `162109821699` | `www.rosa.bot` | `E2IS3O9VPVJFGQ` |
 
-The script checks the profile, account, required local files, and CloudFront origin before proceeding. It defaults to a read-only upload preview. An explicit `--apply` uploads assets first, HTML last, preserves the vCard URLs, and waits for CloudFront invalidation. It never empties the bucket or deletes existing media. Obsolete unreferenced files can be cleaned up separately after review.
+Pushes to `develop` deploy to the development site. Pushes to the production branch, `master`, deploy to production after the protected `production` GitHub Environment is approved. The workflow authenticates to AWS through GitHub OIDC; it does not use long-lived AWS keys. The existing CommerceSong roles already trust repositories owned by `forgotpw`:
+
+- Development: `arn:aws:iam::478543871670:role/github-actions-deploy-dev`
+- Production: `arn:aws:iam::162109821699:role/github-actions-deploy-prod`
+
+The workflow calls `deploy.sh`, so automated and manual deployments share the same safeguards. The script checks the account, required local files, and CloudFront origin before proceeding. It defaults to a read-only upload preview. An explicit `--apply` uploads assets first, HTML last, preserves the vCard URLs, and waits for CloudFront invalidation. It never empties the bucket or deletes existing media. Obsolete unreferenced files can be cleaned up separately after review.
+
+`master` remains the production/default branch for now. Keeping the existing branch avoids combining a default-branch migration with the first automated release. The release path is `develop` -> `master`; migrating to `main` can be handled separately after the pipeline is proven.
+
+### One-time GitHub setup
+
+The public `forgotpw` repository inherits the organization-level `AWS_ACCOUNT_ID_DEV` and `AWS_ACCOUNT_ID_PROD` Actions secrets. These GitHub Environments are configured:
+
+| Environment | Allowed branch | Protection |
+| --- | --- | --- |
+| `development` | `develop` | No approval required |
+| `production` | `master` | Required reviewer; self-review allowed for a solo release |
+
+The environment branch rules are defense in depth; the workflow also maps each branch to a fixed AWS account, bucket, and CloudFront distribution.
+
+### Automated release
+
+1. Push or merge to `develop` and verify the development deployment at [www-dev.rosa.bot](https://www-dev.rosa.bot).
+2. Merge `develop` into `master`.
+3. Approve the pending `production` environment deployment in GitHub Actions.
+4. Verify [www.rosa.bot](https://www.rosa.bot) after the workflow completes.
+
+### Manual recovery deployment
+
+Routine releases must use GitHub Actions. `deploy.sh` remains available for reviewed recovery use when CI/CD is unavailable.
 
 ### Development
 
@@ -31,7 +60,7 @@ The script checks the profile, account, required local files, and CloudFront ori
 export AWS_ENV=dev
 export AWS_PROFILE=csdev
 ./deploy.sh --dry-run
-# After reviewing the preview:
+# Recovery only, after reviewing the preview:
 ./deploy.sh --apply
 ```
 
@@ -41,7 +70,7 @@ export AWS_PROFILE=csdev
 export AWS_ENV=prod
 export AWS_PROFILE=csprod
 ./deploy.sh --dry-run
-# After reviewing the site and authorizing publication:
+# Recovery only, after reviewing the site and authorizing publication:
 ./deploy.sh --apply
 ```
 
