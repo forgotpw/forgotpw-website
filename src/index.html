@@ -1,338 +1,544 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">                                 
-    <meta content="text/html;charset=UTF-8" http-equiv="Content-type">
-    <meta name="theme-color" content="#000">
-    
-    <title>Rosa | Password Manager Chat Bot</title>
-    
-    <link rel="stylesheet" href="css/style_rosa.css" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,600" rel="stylesheet">
-    
-    <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="Images/favicon-16x16.png">
-    <link rel="mask-icon" href="Images/safari-pinned-tab.svg" color="#5bbad5">
-    
-    <script src="scripts/jquery-3.2.1.min.js"></script>
-    <script src="scripts/startswith.js"></script>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fbf8f5" />
+    <meta
+      name="description"
+      content="Rosa remembers part of your password. You remember the rest. No app to install, no account to create. Just text Rosa to get started."
+    />
+    <title>Rosa — Passwords, without the headache.</title>
+    <link rel="icon" type="image/png" href="Images/favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="Images/apple-touch-icon.png" />
+    <link rel="stylesheet" href="css/rosa.css" />
+    <script src="scripts/rosa.js" defer></script>
     <!-- Google Analytics -->
     <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    
-    ga('create', 'UA-127335372-1', 'auto');
-    ga('send', 'pageview');
+      (function (i, s, o, g, r, a, m) {
+        i["GoogleAnalyticsObject"] = r;
+        ((i[r] =
+          i[r] ||
+          function () {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date()));
+        ((a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]));
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+      })(
+        window,
+        document,
+        "script",
+        "https://www.google-analytics.com/analytics.js",
+        "ga",
+      );
+
+      ga("create", "UA-127335372-1", "auto");
+      ga("send", "pageview");
     </script>
     <!-- End Google Analytics -->
 
     <!-- Global site tag (gtag.js) - Google Ads: 758048748 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-758048748"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-758048748"
+    ></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-        gtag('config', 'AW-758048748');
+      gtag("config", "AW-758048748");
     </script>
-    <script>
-        $(document).ready(function(){         
-          $("a").on('click', function(event) {
-            console.log(this.hash)
-            if (this.hash !== "" && !this.hash.startsWith('#/')) {
-              event.preventDefault();
-              var hash = this.hash;
-              $('html, body').animate({
-                scrollTop: $(hash).offset().top
-              }, 800, function(){
-                window.location.hash = hash;
-              });
-            } 
-          });
-        });
-    </script>
-
     <!-- Facebook Pixel Code -->
     <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '338042973502552');
-        fbq('track', 'PageView');
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
+      fbq("init", "338042973502552");
+      fbq("track", "PageView");
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-        src="https://www.facebook.com/tr?id=338042973502552&ev=PageView&noscript=1"
-    /></noscript>
     <!-- End Facebook Pixel Code -->
 
     <!-- Custom scripts -->
     <script>
-        function fireConversionScripts() {
-            console.log('Firing AdWords conversion ...');
-            gtag('event', 'conversion', {'send_to': 'AW-758048748/y9JsCMaxh6IBEOzPu-kC'});
+      function fireConversionScripts() {
+        gtag("event", "conversion", {
+          send_to: "AW-758048748/y9JsCMaxh6IBEOzPu-kC",
+        });
 
-            console.log('Firing Facebook conversion ...');
-            fbq('track', 'Contact');
+        fbq("track", "Contact");
 
-            return true;
-        }
+        return true;
+      }
     </script>
-
-</head>
-<body class="MainBackgroundColor">
-<!--MobileMenu-->
-    <div class="MobileMenu" style="display:none;" id="MobileMenu">
-        <div class="MobileHeader">Menu
-            <a href = "javascript:void(0)" onclick = "document.getElementById('MobileMenu').style.display='none';">
-                <img src="Images/close_icon.svg" class="FPWMobileMenu">
-            </a>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header wrap">
+      <a href="/" aria-label="Rosa home" class="brand"
+        ><img src="Images/rosa-logo.svg" width="68" height="68" alt="Rosa"
+      /></a>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="navigation"
+        hidden
+      >
+        Menu <span aria-hidden="true">☰</span>
+      </button>
+      <nav id="navigation" aria-label="Main navigation">
+        <a href="#howitworks">How it works</a><a href="#security">Security</a
+        ><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
+      </nav>
+      <a class="button button-small header-cta" href="sms:+18647778711"
+        >Text Rosa <span aria-hidden="true">↗</span></a
+      >
+    </header>
+    <main id="main">
+      <section class="hero wrap" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="tiny-flower" aria-hidden="true">✳</span> A little help
+            remembering
+          </p>
+          <h1 id="hero-title">
+            Passwords,<br />without the<br /><em>headache.</em>
+          </h1>
+          <p class="hero-description">
+            A different password for every website.<br />Just one private part
+            to remember.<br />Rosa takes care of the rest.
+          </p>
+          <a class="button" href="sms:+18647778711"
+            >Text Rosa to get started <span aria-hidden="true">↗</span></a
+          >
+          <p class="cta-note">
+            Just text “hello” to <a href="sms:+18647778711">1-864-777-8711</a>
+          </p>
+          <div class="hero-benefits">
+            <span>No app</span><span>No signup</span
+            ><span>No credit card to start</span>
+          </div>
         </div>
-        <a href="#howitworks" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('howitworks').style.display='block'" class="LinkStyle">
-            <div class="MobileMenuRow">How it works</div>
-        </a>
-        <a href="#tips" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('tips').style.display='block'" class="LinkStyle">
-            <div class="MobileMenuRow">Tips</div>
-        </a>
-        <a href="#security" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('security').style.display='block'" class="LinkStyle">
-            <div class="MobileMenuRow">Security</div>
-        </a>
-        <a href="#pricing" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('pricing').style.display='block'" class="LinkStyle">
-            <div class="MobileMenuRow">Pricing</div>
-        </a>
-        <a href="#alexa" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('alexa').style.display='block'" class="LinkStyle">
-            <div class="MobileMenuRow">Alexa</div>
-        </a>
-        <a href="#faq" onclick = "document.getElementById('MobileMenu').style.display='none';document.getElementById('faq').style.display='block'" class="LinkStyle">
-            <div class="MobileMenuRow">FAQ</div>
-        </a>
-    </div>
-    <div class="mainpagecontent">
-<!--Header-->
-    <div class="navbar HeaderBkgColor">
-        <div class="HeaderMain">
-            <a href="/" class="LinkStyle">
-                <img src="Images/rosa-logo.svg" class="SiteLogoImage">
-            </a>
-            <a href = "javascript:void(0)" onclick = "document.getElementById('MobileMenu').style.display='block';">
-                <img src="Images/fpw_hamburger.svg" class="FPWMobileMenu">
-            </a>
+        <div
+          class="hero-art"
+          aria-label="Illustration of retrieving Rosa’s part of an Amazon password"
+        >
+          <div class="orbit orbit-one" aria-hidden="true"></div>
+          <div class="orbit orbit-two" aria-hidden="true"></div>
+          <div class="art-note note-top">
+            A familiar conversation.<br /><strong
+              >A better password habit.</strong
+            ><span aria-hidden="true">↘</span>
+          </div>
+          <div class="phone">
+            <div class="phone-status" aria-hidden="true">
+              <span>9:41</span><span>▮▮▮ &nbsp; ▰</span>
+            </div>
+            <div class="phone-contact">
+              <span aria-hidden="true">‹</span>
+              <div class="contact-avatar">
+                <img src="Images/rosa-logo.svg" width="45" height="45" alt="" />
+              </div>
+              <strong>Rosa</strong><small>Text message</small>
+            </div>
+            <div class="conversation">
+              <p class="message-time">Today 9:41 AM</p>
+              <p class="bubble outgoing">get amazon</p>
+              <p class="bubble incoming">
+                Here’s your link to view your password for amazon.
+              </p>
+              <div class="link-preview">
+                <span class="mini-lock" aria-hidden="true">↗</span
+                ><strong>View your password</strong
+                ><span>Open the link from Rosa</span>
+              </div>
+              <span class="illustration-label">Example conversation</span>
+            </div>
+            <div class="phone-compose" aria-hidden="true">
+              <span>＋</span>
+              <div>Text message <b>↑</b></div>
+            </div>
+            <div class="phone-home" aria-hidden="true"></div>
+          </div>
+          <div class="password-note">
+            <span class="note-check" aria-hidden="true">✓</span>
+            <div>
+              <small>ROSA’S PART</small><strong>sublimecrocodile</strong
+              ><span>Your private part stays with you.</span>
+            </div>
+          </div>
         </div>
-<!--Mobile Only CTA-->
-        <a href="sms:18647778711" onclick="return fireConversionScripts();" class="FPWMobileCTA">
-            <div class="FPWMobileCTASpacer">
-                <img src="Images/sms_sml.svg" class="FPWMobileCTAIcon">
-                <div class="FPWMobileCTAText">Tap here to start saving passwords via SMS.<br>Text "hello" to get started</div>
-            </div>
-        </a>
-<!--Nav-->
-        <div class="NavMain">         
-            <div class="NavText">
-                <a href="#howitworks" class="LinkStyleNav" id="link1">HOW IT WORKS</a>
-                <a href="#tips" class="LinkStyleNav" id="link2">TIPS</a>
-                <a href="#security" class="LinkStyleNav" id="link3">SECURITY</a>
-                <a href="#pricing" class="LinkStyleNav" id="link4">PRICING</a>
-                <a href="#alexa" class="LinkStyleNav" id="link6">ALEXA</a>
-                <a href="#faq" class="LinkStyleNav" id="link5">FAQ</a>
-            </div>
+      </section>
+      <div class="intro-strip">
+        <div class="wrap">
+          <span>Less “forgot password.”</span
+          ><span class="strip-flower" aria-hidden="true">✳</span
+          ><span>More getting on with your day.</span>
         </div>
-    </div>
-<!--Hero Image-->
-    <div class="BkgImage1">
-        <div class="HeroTextBox">
-            <div class="TitleText">A New Fast and Secure Way<br>to Store Passwords</div>
-            <a class="SubTitleText" href="sms:18647778711" onclick="return fireConversionScripts();">
-                Just tap here and text "hello" to 1-864-777-8711
-            </a>
-            <iframe width="560" height="315" class="MainVideoThumbnail" src="https://www.youtube.com/embed/x1QAvQasiZg?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <div class="PhoneLinkText">
-                To try it out text "hello" to <a class="PhoneLinkText" href="sms:18647778711" onclick="return fireConversionScripts();">1-864-777-8711</a>
-            </div>
+      </div>
+      <section
+        class="split-section wrap section"
+        id="tips"
+        aria-labelledby="split-title"
+      >
+        <div class="section-heading">
+          <p class="eyebrow">The idea is simple</p>
+          <h2 id="split-title">
+            Rosa remembers a part.<br /><em>You remember the rest.</em>
+          </h2>
+          <p>
+            Give each website its own password, made of two parts. Store the
+            unique part with Rosa. Keep one private part in your head, and add
+            it yourself when you log in.
+          </p>
         </div>
-        <div id="howitworks"></div>
-    </div>
-<!--How it works section-->
-    <div class="FloatingTextSpace2 FloatingTextSpaceColor">
-        <div class="FloatingInfoBlock">
-            <div class="TextSideL">
-                <H1 class="H1Color" style="display:margin-bottom:12px;margin-top:14px;">How does this work?</H1><br>
-                <p>Rosa is a password manager reinvented as a chat bot.  You interact with Rosa
-                    entirely through SMS text messages on your phone.  When you create a new password
-                    with any website, text Rosa that you want to store the password.  We'll text
-                    you back a link to quickly and securely store the password.  Later you can text
-                    Rosa to get the password, and we'll text you back a link to view it securely.
-                    Rosa interacts with you entirely through SMS text messages on your phone,
-                    which is how we know we're always communicating directly with you.  Rosa
-                    does not ever know or store your name, username, or email address.  There is
-                    no software to install and there is no need to create a user login with Rosa.</p>
-            </div>
-            <img src="Images/gears.svg"class="TextSideR">
+        <div class="password-equation">
+          <div class="password-part rosa-part">
+            <span class="part-number">01 / WITH ROSA</span
+            ><strong>sublimecrocodile</strong>
+            <p>A different part for every website.</p>
+          </div>
+          <span class="equation-sign" aria-hidden="true">+</span>
+          <div class="password-part your-part">
+            <span class="part-number">02 / ONLY WITH YOU</span
+            ><strong>15AZ!$</strong>
+            <p>Your private part. Never share it with Rosa.</p>
+          </div>
         </div>
-    </div>    
-<!--Password Tips Section-->        
-    <div class="BkgImage2" id="tips">
-        <div class="HeroTextBox">
-            <div class="TitleText">How to create passwords that work best with Rosa</div>
-            <div class="HeroText HeroTextColor">
-                <h2>Do: Use words you can easily type, like:</h2>
-                <p>sublimecrocodile</p>
-                <p>(I can already hear your objection, keep reading!)</p>
-                <br><br>
-                <h2>Don't: Use random characters that are very hard to type:</h2>
-                <p>8r940ufHzieJJsqdW3io</p>
-                <br><br>
-                <p>
-                    Remember that you can only retrieve your passwords via text message, so you can only view them on your phone.  If you need to type in a password on your desktop computer, you won't be able to copy/paste, so you'll be viewing the password on your phone and typing it into your computer, so use words or phrases you can easily type rather than random characters.  Don't add numbers, upper case letters, and special characters here (keep reading!).
-                </p>
-                <br><br>
-                <h2>Do: Have a common string of special characters you will add to the end of every password (but don't tell us).</h2>
-                <p>15AZ!$ (this common part is private)</p>
-                <br><br>
-                <p>
-                15AZ!$ is the common password you memorize and add to the end of all of your passwords but don't tell us.  So your password to Amazon might be sublimecrocodile15AZ!$ and your password to Walmart might be eastereggs15AZ!$.  You store just sublimecrocodile and eastereggs with us.  The common portion you memorize should also cover the numbers, upper case letters and special character requirements that most sites have.
-                </p>
-                <br><br>
-                <div style="text-align: center">
-                    <img class="ExamplePass" src="Images/example.svg" alt="Common password example">
-                </div>
-                <br><br>
-                <p>Choose your common password carefully!  For this system to work this is not something you can frequently change.</p>
-                <br><br>
-            </div>
+        <div class="combined-password">
+          <span>Your complete password</span
+          ><code><span>sublimecrocodile</span><b>15AZ!$</b></code>
+          <p>
+            Set the complete two-part password on the website first. Then put
+            the two together whenever you log in.
+          </p>
         </div>
-    </div>      
-<!--Security-->
-        <div class="FloatingTextSpace2 FloatingTextSpaceColor" id="security">
-            <div class="FloatingInfoBlock">
-                <div class="TextSideL1">
-                    <H1 class="H1Color" style="display:margin-bottom:12px;">Our Philosophy on Security</H1><br>
-                    <p>Good security that’s easy enough to actually use is better than great security that is too cumbersome to use.  If having the best security is too inconvenient, you won’t use it, rendering it useless.</p>
-                    <br><br>
-                    <p>If your password habits are less than ideal (you know if this is true about yourself), we’re here to present a solution where you can dramatically improve your level of security in a simple way that we think you’ll find easy enough to actually use.</p>
-                    <br><br>
-                    <H1 class="H1Color" style="display:margin-bottom:12px;">What security features are protecting my passwords?</H1><br>
-                    <p>We don't ask for your name, username, or email address. Your phone number is your only identity in our system, which we pseudo anonymise by creating a salted SHA-256 bit hash of your phone number and use the resulting token throughout the rest of our system in place of your phone number, where we store any data including your passwords. For example, +1-212-555-1212 becomes something like: UT37zdf322iuoVdkl@iR^GDSv4fgu93rsof3wdBJyJM.<br>Your passwords are encrypted with AES-256 bit encryption. All data is encrypted both in transit and at rest end to end in all parts of our system. </p>
-                </div>
-                <img src="Images/security.svg"class="TextSideR">
-            </div>
-        </div>    
-<!--Pricing Section-->
-        <div class="BkgImage2" id="pricing">
-            <div class="HeroTextBox">
-                <div class="TitleText">Pricing</div>
-                <div class="HeroText HeroTextColor">
-                    <img src="Images/store_free_forever.svg" class="MainIcon">
-                    <br><br>
-                    <H2>Store as many passwords as you want free forever</H2><br><br>
-                    <p>There is never any cost to store as many passwords as you like, we'll keep them stored securely forever, or as long as you'd like us to (you can delete your entire account at any time to permanently remove all your data).</p>
-                    <br><br>
-                    <img src="Images/onehundred.svg" class="MainIcon">
-                    <br><br>
-                    <H2>Your first 100 password retrievals are free</H2><br><br>
-                    <p>After that, to continue using Rosa pay just $2 per month (billed $24 annually) for an unlimited use plan.</p>
-                    <br><br>
-                    <img src="Images/card.svg" class="MainIcon">
-                    <br><br>
-                    <H2>No credit card required to start</H2><br><br>
-                    <p>Use our system entirely free without providing any payment information for the first 100 password retrievals. We’ll text you about payment options before your free usage is up.</p>
-                    <br><br>
-                </div>
-            </div>
+        <p class="example-caption">
+          An example, not a password to copy. “Parts” don’t have to be equal
+          lengths.
+        </p>
+        <div class="split-takeaway">
+          <span aria-hidden="true">✳</span>
+          <p>
+            <strong>The part you remember is the part Rosa never sees.</strong
+            ><br />Only save the website’s unique part in Rosa’s link. Never
+            send your private part by text.
+          </p>
         </div>
-<!--FAQ-->
-        <div class="FloatingTextSpace2 FloatingTextSpaceColor" id="faq">
-            <div class="FloatingInfoBlock" style="margin-bottom:20px;">
-                <div class="TextBothSides">
-                    <H1 class="H1Color" style="display:margin-bottom:12px;">FAQ</H1><br>
-                    <br><br>
- 
-                    <H2>Why don't I have to log in to use Rosa?</H2><br><br>
-                    <p>Your passwords are never displayed on the screen, the only way to extract them is by text message to your mobile phone. Likewise, to store a password you will have to confirm by text message to your phone that you originated the request. This serves as a form of authentication instead of requiring yet one more password you're just going to forget.</p>
-                    <br><br>
-
-                    <H2>Are SMS text messages secure?</H2><br><br>
-                    <p>The reality is we are already depending on SMS text messages as a means of authentication to secure our most important accounts.  If you use Google's Gmail for example, and supply your mobile phone as a backup means of entering your account, then a SMS text message alone will allow you to gain full access of your email account, and with access to your email account, you then have access to nearly all other of your accounts.  Also consider that email isn't more secure than SMS text messages, and we rely on a link being sent in email to reset your password to any other account you are already using.</p>
-                    <br><br>
-                    <p>That said, there are vulnerabilities in the <a href="https://en.wikipedia.org/wiki/Signalling_System_No._7" class="LinkStyle2">Signalling System No. 7 (SS7 network)</a>, which SMS relies on, which can potentially allow messges to be illegally viewed in transit by sophisticated hackers. This is what they're referring to in the movies when they say "we're not on a secure line".  Because of this we advise that you remember a common password and combine that with all passwords you store with us <a href="#tips" class="LinkStyle2">(read more)</a>.</p>
-                    <br><br>
-
-                    <H2>Are you going to bother me with unwanted text messages?</H2>
-                    <p>No, Rosa will only respond to your requests, not spam you out of the blue.</p>
-                    <br><br>
-
-                    <H2>If someone else gains access to my phone, doesn't that mean they can gain access to my passwords?</H2><br><br>
-                    <p>If you're following our recommendation to use a common password, even if someone were to gain access to your phone, they would not know your complete password.  You may also be using things like your browser’s ability to remember your passwords.  If you step away from your computer you have the same concern.  Most people however have their phones on them at all times, it is the one thing you are almost never without.</p>
-                    <br><br>
-
-                    <H2>Aren't the readable passwords you recommend (like “sublimecrocodile”) less secure than long strings of random characters?</H2><br><br>
-                    <p>When combined with a common password like 15AZ!$, the passwords are more secure.  Additionally, many websites have measures against brute force attacks such as locking your account out after a number of failed attempts.  You can also take into account the importance of the site you are storing a password for, and if you like you can use a more difficult to type password for your brokerage account for example.</p>
-                    <br><br>
-
-                    <H2>What if my phone number changes?</H2><br><br>
-                    <p>You can request by text message that we send you your complete list of passwords.  For security reasons we can only text this to your existing phone number, so you must request this before your phone number changes.  You can then send us back the list of passwords to import into your new phone number.  For help with this contact us at hello@rosa.bot.</p>
-                    <br><br>
-
-                    <H2>Is this Open Source?</H2><br><br>
-                    <p>If you want to peek under the hood and see for yourself, our source code base is entirely open source, hosted at <a href="https://github.com/forgotpw" class="LinkStyle2">https://github.com/forgotpw</a></p>
-                    <br><br>
-
-                    <H2>Can I remove all my stored passwords?</H2><br><br>
-                    <p>Yes, at any time you can completely remove all data you have provided us.</p>
-                </div>
+      </section>
+      <section class="how-section" id="howitworks" aria-labelledby="how-title">
+        <div class="wrap section">
+          <div class="how-heading">
+            <div>
+              <p class="eyebrow">Already know how to text?</p>
+              <h2 id="how-title">Then you already<br />know how to start.</h2>
             </div>
-        </div> 
-<!--Alexa Section-->
-<div class="BkgImage2" id="alexa">
-    <div class="HeroTextBox">
-        <div class="TitleText">Request your passwords with your voice through Amazon Alexa</div>
-        <div class="HeroText HeroTextColor">
-             <img src="Images/alexa_rosa.png" class="MainIconTest2">
-            <h2>Coming Soon</h2>
-            <br><br>
-            <p>Soon you will be able to request your passwords with your voice by asking Amazon Alexa.</p>
-            <p>Say "Alexa, ask Rosa for my password to Amazon.com.", and Rosa will text a link to your phone
-            to retrieve your password.</p>
-            <br><br>
+            <p>
+              No downloads. No account forms. No new username.<br />Your phone
+              number is how Rosa recognizes you.
+            </p>
+          </div>
+          <div class="steps">
+            <article>
+              <span class="step-number">01</span>
+              <div class="step-visual">
+                <span class="small-bubble"
+                  >hello <span aria-hidden="true">↗</span></span
+                >
+              </div>
+              <h3>Say hello.</h3>
+              <p>
+                Text “hello” to <a href="sms:+18647778711">1-864-777-8711</a>.
+                That’s it. You can start using Rosa right away.
+              </p>
+            </article>
+            <article>
+              <span class="step-number">02</span>
+              <div class="step-visual">
+                <span class="small-bubble"
+                  >set amazon <span aria-hidden="true">↗</span></span
+                >
+              </div>
+              <h3>Save Rosa’s part.</h3>
+              <p>
+                Text “set amazon” (or another website). Rosa sends a link where
+                you save just that website’s unique password part.
+              </p>
+            </article>
+            <article>
+              <span class="step-number">03</span>
+              <div class="step-visual">
+                <span class="small-bubble"
+                  >get amazon <span aria-hidden="true">↗</span></span
+                >
+              </div>
+              <h3>Ask when you need it.</h3>
+              <p>
+                Text “get amazon.” Open Rosa’s reply link, then add your private
+                part when you log in to Amazon.
+              </p>
+            </article>
+          </div>
+          <div class="how-footer">
+            <a href="rosa.vcf" download
+              >Save Rosa to your contacts <span aria-hidden="true">↗</span></a
+            ><span>One less thing to remember.</span>
+          </div>
         </div>
-    </div>
-</div>
-<!--Footer-->      
-        <div class="FollowUsText">&nbsp;&nbsp;&nbsp;&nbsp;Get in touch:</div>
-        <div class="SocialButtonSpace">
-            <a href="mailto:hello@rosa.bot" class="LinkStyle"><img class="SBSML1" src="Images/email_icon.svg"></a>
-            <a href="https://github.com/forgotpw" class="LinkStyle"><img class="SBSML2"  src="Images/github.svg"></a>
+      </section>
+      <section
+        class="video-section wrap section"
+        id="video"
+        aria-labelledby="video-title"
+      >
+        <div class="section-heading">
+          <p class="eyebrow">See it in a real conversation</p>
+          <h2 id="video-title">A little show-and-tell.</h2>
+          <p>
+            Watch how the two parts work together, from saving a password to
+            logging in.
+          </p>
         </div>
-        <div class="MainFooter MainFooterColor">
-            <div class="RFooterLogoSpace">
-                <img class="InsertLogoSpaceFooter"src="Images/rosa-logo.svg">
-            </div>
-            <div class="NavText2">
-                <a href="#howitworks" class="LinkStyle" id="link1">HOW IT WORKS</a>
-                &nbsp;&nbsp;&nbsp;
-                <a href="#tips" class="LinkStyle" id="link2">TIPS</a>
-                &nbsp;&nbsp;&nbsp;
-                <a href="#security" class="LinkStyle" id="link3">SECURITY</a>
-                &nbsp;&nbsp;&nbsp;
-                <a href="#alexa" class="LinkStyle" id="link3">ALEXA</a>
-                &nbsp;&nbsp;&nbsp;
-                <a href="#pricing" class="LinkStyle" id="link4">PRICING</a>
-                &nbsp;&nbsp;&nbsp;
-                <a href="#faq" class="LinkStyle" id="link5">FAQ</a>
-                &nbsp;&nbsp;&nbsp;
-                <div class="CopyrightTextColor CopyrightText">©2019 Commerce Song, LLC. All Rights Reserved
-                </div>
-            </div>
+        <div class="video-frame">
+          <video
+            controls
+            playsinline
+            preload="none"
+            poster="Images/rosa-explainer-poster.jpg"
+            aria-label="Rosa explainer: storing and retrieving part of a password"
+          >
+            <source src="videos/rosa-explainer-v1.mp4" type="video/mp4" />
+            <track
+              kind="captions"
+              src="videos/rosa-explainer-en.vtt"
+              srclang="en"
+              label="English"
+            />
+            Your browser does not support embedded video.
+            <a href="videos/rosa-explainer-v1.mp4"
+              >Download the Rosa explainer.</a
+            >
+          </video>
         </div>
-    </div>
-</body>
+        <p class="video-caption">
+          The original Rosa demo. The screens may look a little different today;
+          the two-part idea is the same.
+        </p>
+      </section>
+      <section
+        class="security-section wrap section"
+        id="security"
+        aria-labelledby="security-title"
+      >
+        <div class="security-copy">
+          <p class="eyebrow">A little less information. A lot less friction.</p>
+          <h2 id="security-title">
+            Your passwords.<br /><em>Not your life story.</em>
+          </h2>
+          <p>
+            Rosa is for people who keep meaning to stop using the same password
+            everywhere. It makes a different password for each website easier to
+            keep track of.
+          </p>
+          <p>
+            No Rosa username to create. No need to share your name, email
+            address, or the usernames you use on other websites.
+          </p>
+          <a class="text-link" href="#security-details"
+            >Let’s talk about security <span aria-hidden="true">↘</span></a
+          >
+        </div>
+        <div class="knowledge-card">
+          <div class="knowledge-heading">
+            <img
+              src="Images/rosa-logo.svg"
+              width="58"
+              height="58"
+              alt=""
+            /><span>A small circle of trust.</span>
+          </div>
+          <h3>What Rosa needs</h3>
+          <ul>
+            <li>Your phone number</li>
+            <li>The names of the websites you save</li>
+            <li>Each website’s unique password part</li>
+          </ul>
+          <div class="private-line">
+            <span aria-hidden="true">✳</span>
+            <p>
+              <strong>Your private part stays out.</strong><br />Rosa doesn’t
+              have your whole password when you use the two-part approach.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section
+        class="pricing-section"
+        id="pricing"
+        aria-labelledby="pricing-title"
+      >
+        <div class="wrap section pricing-layout">
+          <div>
+            <p class="eyebrow">Simple, right down to the price</p>
+            <h2 id="pricing-title">Start free.<br />Keep it simple.</h2>
+            <p>
+              Store as many password parts as you like for free.<br />Your first
+              100 password retrievals are on us.
+            </p>
+            <p>
+              No credit card required to start. Rosa will text you about payment
+              options before your free retrievals run out.
+            </p>
+          </div>
+          <div class="price-card">
+            <span class="price-label">AFTER YOUR FIRST 100 RETRIEVALS</span>
+            <div class="price"><strong>$2</strong><span>/ month</span></div>
+            <p>Billed $24 annually</p>
+            <ul>
+              <li>Unlimited password storage</li>
+              <li>Unlimited retrievals on the paid plan</li>
+              <li>The same simple text conversation</li>
+            </ul>
+            <a class="button" href="sms:+18647778711"
+              >Try Rosa for free <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+      </section>
+      <section
+        class="faq-section wrap section"
+        id="faq"
+        aria-labelledby="faq-title"
+      >
+        <div class="faq-heading">
+          <p class="eyebrow">A few things you might be wondering</p>
+          <h2 id="faq-title">Good questions.</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>Why don’t I need to create an account?</summary>
+            <p>
+              Your phone number is how Rosa recognizes you. You request a
+              password part by text, and Rosa sends a link back to that number.
+              There’s no separate Rosa login or username.
+            </p>
+          </details>
+          <details>
+            <summary>How should I choose my two password parts?</summary>
+            <p>
+              Use a different, hard-to-guess part for every website. A longer
+              phrase can be easier to type from your phone than random
+              characters. Choose a private part you can remember, and combine
+              the two to meet each website’s password requirements. Don’t use
+              the examples on this page as real passwords.
+            </p>
+            <p>
+              Keep your private part to yourself. A shared private part is not a
+              guarantee of security: if a complete password is exposed on one
+              website, that part could be exposed too.
+            </p>
+          </details>
+          <details id="security-details">
+            <summary>Is SMS secure? What if someone gets my phone?</summary>
+            <p>
+              SMS has risks, including SIM swapping, interception, and recycled
+              phone numbers. Someone with access to your texts may also be able
+              to open Rosa’s links and retrieve the parts you stored.
+            </p>
+            <p>
+              Keeping a private part out of Rosa means those stored parts alone
+              aren’t your complete passwords. It doesn’t eliminate every risk.
+              Protect your phone and mobile carrier account, and use stronger
+              authentication on websites that offer it.
+            </p>
+            <p>
+              Rosa aims to make better password habits easy. It does not promise
+              the strongest possible protection, and SMS is not end-to-end
+              encrypted.
+            </p>
+          </details>
+          <details>
+            <summary>What if my phone number changes?</summary>
+            <p>
+              Arrange to transfer your saved password parts before you lose
+              access to your old number. Do this while you can still receive
+              texts at that number.
+            </p>
+          </details>
+          <details>
+            <summary>What if I forget my private part?</summary>
+            <p>
+              Rosa can only return the part you saved with it. It cannot recover
+              the private part you kept in your head. If you forget that part,
+              you’ll need to use the affected website’s password reset process.
+            </p>
+          </details>
+          <details>
+            <summary>Will Rosa send me unwanted texts?</summary>
+            <p>
+              Rosa responds to your requests and sends service messages, such as
+              information about payment when your free retrievals are nearly
+              used up.
+            </p>
+          </details>
+          <details>
+            <summary>Can I remove my stored passwords?</summary>
+            <p>
+              Yes. You can remove the password data you’ve saved with Rosa. Text
+              Rosa for help.
+            </p>
+          </details>
+        </div>
+      </section>
+      <section class="closing">
+        <div class="wrap">
+          <span class="closing-flower" aria-hidden="true">✳</span>
+          <p class="eyebrow">Your next password can be different.</p>
+          <h2>It starts with <em>“hello.”</em></h2>
+          <a class="button button-light" href="sms:+18647778711"
+            >Text Rosa <span aria-hidden="true">↗</span></a
+          >
+          <p>
+            <a href="sms:+18647778711">1-864-777-8711</a> · No app. No signup.
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer wrap">
+      <a href="/" aria-label="Rosa home" class="brand"
+        ><img src="Images/rosa-logo.svg" width="64" height="64" alt="Rosa"
+      /></a>
+      <p>A little help remembering.</p>
+      <div>
+        <a href="privacy.html">Privacy</a
+        ><span>© 2026 Commerce Song, LLC</span>
+      </div>
+    </footer>
+  </body>
 </html>
