@@ -1,6 +1,6 @@
 # Rosa marketing website
 
-Static marketing website for [Rosa.bot](https://www.rosa.bot), formerly ForgotPW. Plain HTML, CSS, and a small script; no build step or package installation is required. Product direction is in the private `forgotpw/product` repository.
+Static marketing website for [Rosa.bot](https://www.rosa.bot), formerly ForgotPW. Plain HTML, CSS, and a small script; no package installation is required. Deployment uses Python 3 to prepare environment-specific indexing tags. Product direction is in the private `forgotpw/product` repository.
 
 ## Local preview
 
@@ -75,6 +75,50 @@ export AWS_PROFILE=csprod
 ```
 
 Use the normal AWS SSO login for the chosen profile if its session has expired. The old `fpwdev`/`fpwprod` profiles and `iam-starter` wrapper are no longer the documented deployment path. Do not apply the legacy infrastructure repository wholesale merely to publish a website update.
+
+## Search indexing
+
+The homepage and privacy page use production canonical URLs. `src/sitemap.xml`
+lists those two URLs, and `src/robots.txt` advertises that sitemap without blocking
+page or asset crawling. The homepage includes `WebSite` structured data for the
+Rosa name and a descriptive search title. Social-sharing metadata remains separate.
+
+`deploy.sh` calls `scripts/prepare_site.py` to copy the site into a temporary release
+directory. Production retains `index, follow`; development receives `noindex,
+follow` on every HTML page. Crawling must stay allowed so search engines can read
+the development `noindex` instruction. Canonicals and sitemap URLs consistently
+refer to production in both environments. The source files are never modified by
+deployment, and a new HTML page must contain exactly one production robots tag.
+
+Run the same focused artifact checks used by CI:
+
+```sh
+python3 -m unittest discover -s tests -p test_site_seo.py
+```
+
+After each release, check `/`, `/privacy.html`, `/robots.txt`, and `/sitemap.xml`
+on the target host, including the HTML robots tag and canonical. Unknown paths
+must continue returning HTTP 404; do not rewrite missing pages to the homepage.
+HTTP-to-HTTPS redirects and CloudFront compression were already enabled in both
+environments. Images already reserve dimensions; the video reserves a 16:9 frame
+and uses `preload="none"`. No field Core Web Vitals result or ranking improvement
+is claimed from these source checks. Apex-domain routing and browser asset caching
+are handled by the separate DNS/cache task.
+
+References: [Google canonical URLs](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls),
+[noindex and crawl access](https://developers.google.com/search/docs/crawling-indexing/block-indexing),
+and [site-name structured data](https://developers.google.com/search/docs/appearance/site-names).
+
+## Visitor tracking and social sharing
+
+CloudFront standard logging v2 stores privacy-minimized access logs in a separate
+private S3 bucket in each AWS account. The narrow Terraform module attaches to
+the existing distributions without taking ownership of them. A local script
+summarizes requests, approximate browser page views, referrers, user agents, and
+daily trends. The homepage and privacy page also publish canonical Open Graph and
+Twitter Card metadata with a dedicated 1200 x 630 social image. See
+[`docs/website-visitor-tracking.md`](docs/website-visitor-tracking.md) for the
+architecture, privacy limits, costs, retrieval commands, and release checks.
 
 ## Explainer video
 

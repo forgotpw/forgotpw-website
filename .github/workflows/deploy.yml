@@ -28,11 +28,32 @@ jobs:
         with:
           ref: ${{ github.sha }}
 
+      - name: Validate website search metadata and deployment artifacts
+        run: python3 -m unittest discover -s tests -p test_site_seo.py
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID_DEV }}:role/github-actions-deploy-dev
           aws-region: us-east-1
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_version: 1.8.3
+          terraform_wrapper: false
+
+      - name: Provision development visitor logging
+        working-directory: terraform/visitor-logging
+        run: |
+          terraform init \
+            -backend-config="bucket=terraform-state-${{ secrets.AWS_ACCOUNT_ID_DEV }}" \
+            -backend-config="key=rosa-website-visitor-logging/terraform.tfstate" \
+            -backend-config="region=us-east-1" \
+            -backend-config="dynamodb_table=terraform-state-locks-${{ secrets.AWS_ACCOUNT_ID_DEV }}"
+          terraform validate
+          terraform plan -input=false -var-file=env-dev.tfvars -out=tfplan
+          terraform apply -input=false -auto-approve tfplan
 
       - name: Preview development deployment
         env:
@@ -57,11 +78,32 @@ jobs:
         with:
           ref: ${{ github.sha }}
 
+      - name: Validate website search metadata and deployment artifacts
+        run: python3 -m unittest discover -s tests -p test_site_seo.py
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID_PROD }}:role/github-actions-deploy-prod
           aws-region: us-east-1
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_version: 1.8.3
+          terraform_wrapper: false
+
+      - name: Provision production visitor logging
+        working-directory: terraform/visitor-logging
+        run: |
+          terraform init \
+            -backend-config="bucket=terraform-state-${{ secrets.AWS_ACCOUNT_ID_PROD }}" \
+            -backend-config="key=rosa-website-visitor-logging/terraform.tfstate" \
+            -backend-config="region=us-east-1" \
+            -backend-config="dynamodb_table=terraform-state-locks-${{ secrets.AWS_ACCOUNT_ID_PROD }}"
+          terraform validate
+          terraform plan -input=false -var-file=env-prod.tfvars -out=tfplan
+          terraform apply -input=false -auto-approve tfplan
 
       - name: Preview production deployment
         env:
