@@ -93,7 +93,8 @@ deployment, and a new HTML page must contain exactly one production robots tag.
 Run the same focused artifact checks used by CI:
 
 ```sh
-python3 -m unittest discover -s tests -p test_site_seo.py
+python3 -m unittest discover -s tests -p 'test_site*.py'
+node --test tests/test_redirect.cjs
 ```
 
 After each release, check `/`, `/privacy.html`, `/robots.txt`, and `/sitemap.xml`
@@ -102,8 +103,23 @@ must continue returning HTTP 404; do not rewrite missing pages to the homepage.
 HTTP-to-HTTPS redirects and CloudFront compression were already enabled in both
 environments. Images already reserve dimensions; the video reserves a 16:9 frame
 and uses `preload="none"`. No field Core Web Vitals result or ranking improvement
-is claimed from these source checks. Apex-domain routing and browser asset caching
-are handled by the separate DNS/cache task.
+is claimed from these source checks.
+
+## Apex redirect and deployment freshness
+
+`terraform/apex-redirect` manages an ACM certificate in us-east-1 and a dedicated
+CloudFront distribution that permanently redirects the apex to the canonical
+website, preserving paths and query parameters. GitHub Actions applies this module
+in development and production. The existing website distribution stays in place.
+Development exercises the same redirect using `redirect.www-dev.rosa.bot`.
+
+The site preparation step gives CSS, JavaScript, images and video assets
+content-based filenames in the release copy. Changed bytes get a new URL; the source
+and historical URLs remain available. HTML is uploaded last with
+`no-cache,max-age=0,must-revalidate`, assets retain one-hour caching, and deployments
+wait for a `/*` CloudFront invalidation. See
+[Rosa DNS and cache operations](docs/rosa-dns-and-cache-operations.md) for ownership,
+the production DNS setup, checks and historical browser-cache limitations.
 
 References: [Google canonical URLs](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls),
 [noindex and crawl access](https://developers.google.com/search/docs/crawling-indexing/block-indexing),

@@ -18,7 +18,7 @@ jobs:
   deploy-development:
     if: github.ref == 'refs/heads/develop'
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 35
     environment:
       name: development
       url: https://www-dev.rosa.bot
@@ -29,7 +29,9 @@ jobs:
           ref: ${{ github.sha }}
 
       - name: Validate website search metadata and deployment artifacts
-        run: python3 -m unittest discover -s tests -p test_site_seo.py
+        run: |
+          python3 -m unittest discover -s tests -p 'test_site*.py'
+          node --test tests/test_redirect.cjs
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6
@@ -55,6 +57,18 @@ jobs:
           terraform plan -input=false -var-file=env-dev.tfvars -out=tfplan
           terraform apply -input=false -auto-approve tfplan
 
+      - name: Provision development HTTPS redirect
+        working-directory: terraform/apex-redirect
+        run: |
+          terraform init \
+            -backend-config="bucket=terraform-state-${{ secrets.AWS_ACCOUNT_ID_DEV }}" \
+            -backend-config="key=rosa-website-apex-redirect/terraform.tfstate" \
+            -backend-config="region=us-east-1" \
+            -backend-config="dynamodb_table=terraform-state-locks-${{ secrets.AWS_ACCOUNT_ID_DEV }}"
+          terraform validate
+          terraform plan -input=false -var-file=env-dev.tfvars -out=tfplan
+          terraform apply -input=false -auto-approve tfplan
+
       - name: Preview development deployment
         env:
           AWS_ENV: dev
@@ -68,7 +82,7 @@ jobs:
   deploy-production:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 35
     environment:
       name: production
       url: https://www.rosa.bot
@@ -79,7 +93,9 @@ jobs:
           ref: ${{ github.sha }}
 
       - name: Validate website search metadata and deployment artifacts
-        run: python3 -m unittest discover -s tests -p test_site_seo.py
+        run: |
+          python3 -m unittest discover -s tests -p 'test_site*.py'
+          node --test tests/test_redirect.cjs
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6
@@ -99,6 +115,18 @@ jobs:
           terraform init \
             -backend-config="bucket=terraform-state-${{ secrets.AWS_ACCOUNT_ID_PROD }}" \
             -backend-config="key=rosa-website-visitor-logging/terraform.tfstate" \
+            -backend-config="region=us-east-1" \
+            -backend-config="dynamodb_table=terraform-state-locks-${{ secrets.AWS_ACCOUNT_ID_PROD }}"
+          terraform validate
+          terraform plan -input=false -var-file=env-prod.tfvars -out=tfplan
+          terraform apply -input=false -auto-approve tfplan
+
+      - name: Provision production HTTPS redirect
+        working-directory: terraform/apex-redirect
+        run: |
+          terraform init \
+            -backend-config="bucket=terraform-state-${{ secrets.AWS_ACCOUNT_ID_PROD }}" \
+            -backend-config="key=rosa-website-apex-redirect/terraform.tfstate" \
             -backend-config="region=us-east-1" \
             -backend-config="dynamodb_table=terraform-state-locks-${{ secrets.AWS_ACCOUNT_ID_PROD }}"
           terraform validate

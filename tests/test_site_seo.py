@@ -8,7 +8,7 @@ import unittest
 from urllib.parse import urlsplit
 import xml.etree.ElementTree as ET
 
-from scripts.prepare_site import SOURCE, prepare_site
+from scripts.prepare_site import SOURCE, asset_versions, prepare_site
 
 
 class Page(HTMLParser):
@@ -38,7 +38,10 @@ class SiteSEOTests(unittest.TestCase):
                     self.assertEqual(robots, ["noindex, follow" if environment == "dev"
                                               else "index, follow"])
                     if environment == "prod":
-                        self.assertEqual(page.read_bytes(), original)
+                        normalized = text
+                        for asset, versioned in asset_versions(SOURCE).items():
+                            normalized = normalized.replace(versioned, asset)
+                        self.assertEqual(normalized.encode(), original)
                 for name, page in pages.items():
                     canonical = [a["href"] for t, a in page.elements
                                  if t == "link" and a.get("rel") == "canonical"]
