@@ -76,6 +76,17 @@ export AWS_PROFILE=csprod
 
 Use the normal AWS SSO login for the chosen profile if its session has expired. The old `fpwdev`/`fpwprod` profiles and `iam-starter` wrapper are no longer the documented deployment path. Do not apply the legacy infrastructure repository wholesale merely to publish a website update.
 
+## Visitor tracking and social sharing
+
+CloudFront standard logging v2 stores privacy-minimized access logs in a separate
+private S3 bucket in each AWS account. The narrow Terraform module attaches to
+the existing distributions without taking ownership of them. A local script
+summarizes requests, approximate browser page views, referrers, user agents, and
+daily trends. The homepage and privacy page also publish canonical Open Graph and
+Twitter Card metadata with a dedicated 1200 x 630 social image. See
+[`docs/website-visitor-tracking.md`](docs/website-visitor-tracking.md) for the
+architecture, privacy limits, costs, retrieval commands, and release checks.
+
 ## Explainer video
 
 The old YouTube embed (`x1QAvQasiZg`) is unavailable and has been removed. Doug confirmed the recovered original. The homepage now uses a local MP4 source, ready to be delivered with the site.
