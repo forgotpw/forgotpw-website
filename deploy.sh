@@ -19,8 +19,12 @@ if [[ -n "${AWS_PROFILE:-}" && "${AWS_PROFILE:-}" != "cs${AWS_ENV}" ]]; then
   exit 1
 fi
 export AWS_PAGER=""
-site_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/src"
-for required in index.html privacy.html rosa.vcf css/rosa.css scripts/rosa.js Images/rosa-logo.svg Images/rosa-social-card.png Images/rosa-explainer-poster.jpg videos/rosa-explainer-v1.mp4 videos/rosa-explainer-en.vtt; do
+repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+release_dir="$(mktemp -d)"
+trap 'rm -rf "$release_dir"' EXIT
+site_dir="$release_dir/site"
+python3 "$repo_dir/scripts/prepare_site.py" --environment "$AWS_ENV" --output "$site_dir"
+for required in index.html privacy.html robots.txt sitemap.xml rosa.vcf css/rosa.css scripts/rosa.js Images/rosa-logo.svg Images/rosa-social-card.png Images/rosa-explainer-poster.jpg videos/rosa-explainer-v1.mp4 videos/rosa-explainer-en.vtt; do
   [[ -s "$site_dir/$required" ]] || { echo "Missing site file: $required" >&2; exit 1; }
 done
 actual_account="$(aws sts get-caller-identity --query Account --output text)"
