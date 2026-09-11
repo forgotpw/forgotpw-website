@@ -1,0 +1,5 @@
+environment         = "dev"
+expected_account_id = "478543871670"
+domain_name         = "redirect.www-dev.rosa.bot"
+canonical_hostname  = "www-dev.rosa.bot"
+dns_zone_id         = "Z25H8GAU4QTOBV"

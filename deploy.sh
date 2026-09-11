@@ -44,7 +44,7 @@ upload_s3 sync "$site_dir/" "s3://$bucket/" --exclude '*.html' --exclude 'rosa.v
 upload_s3 cp "$site_dir/rosa.vcf" "s3://$bucket/rosa.vcf" --content-type text/vcard --content-disposition 'attachment; filename="rosa.vcf"' --cache-control no-cache
 # Keep the historical trailing-period URL used in SMS messages.
 upload_s3 cp "$site_dir/rosa.vcf" "s3://$bucket/rosa.vcf." --content-type text/vcard --content-disposition 'attachment; filename="rosa.vcf"' --cache-control no-cache
-upload_s3 cp "$site_dir/" "s3://$bucket/" --recursive --exclude '*' --include '*.html' --cache-control no-cache
+upload_s3 cp "$site_dir/" "s3://$bucket/" --recursive --exclude '*' --include '*.html' --cache-control 'no-cache,max-age=0,must-revalidate'
 if [[ "$mode" == "--apply" ]]; then
   invalidation="$(aws cloudfront create-invalidation --distribution-id "$distribution" --paths '/*' --query Invalidation.Id --output text)"
   echo "Waiting for CloudFront invalidation $invalidation"
