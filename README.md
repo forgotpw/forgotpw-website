@@ -14,7 +14,7 @@ The homepage uses `src/css/rosa.css` and `src/scripts/rosa.js`. The original Ros
 
 ## Hosting and deployment
 
-Rosa already uses S3 static files behind CloudFront, matching the VillageMetrics hosting model. The deployment workflow reuses those existing resources; it does not apply the legacy Terraform configuration or migrate infrastructure.
+Rosa already uses S3 static files behind CloudFront, matching the VillageMetrics hosting model. The development deployment uses CommerceSong's reusable static-site workflow against those existing resources; production retains the existing direct deployment until it is migrated separately. Neither path applies the legacy website Terraform configuration or migrates infrastructure.
 
 Verified with AWS read-only queries on September 10, 2026:
 
@@ -28,7 +28,9 @@ Pushes to `develop` deploy to the development site. Pushes to the production bra
 - Development: `arn:aws:iam::478543871670:role/github-actions-deploy-dev`
 - Production: `arn:aws:iam::162109821699:role/github-actions-deploy-prod`
 
-The workflow calls `deploy.sh`, so automated and manual deployments share the same safeguards. The script checks the account, required local files, and CloudFront origin before proceeding. It defaults to a read-only upload preview. An explicit `--apply` uploads assets first, HTML last, preserves the vCard URLs, and waits for CloudFront invalidation. It never empties the bucket or deletes existing media. Obsolete unreferenced files can be cleaned up separately after review.
+On `develop`, the workflow tests the site, applies the two narrow supporting Terraform modules, prepares an environment-specific artifact, and sends it to `commercesong/org-reusable-workflows`. Its explicit S3 rules upload assets first and HTML last, preserve both vCard URLs and never delete historical media. A final Rosa job verifies the AWS account, CloudFront origin, uploaded headers and development `noindex`, then waits for invalidation and checks the live host. The shared workflow logs the selected environment, artifact, bucket, each S3 operation and final success.
+
+Production and manual recovery still call `deploy.sh`. The script checks the account, required local files, and CloudFront origin before proceeding. It defaults to a read-only upload preview; `--apply` preserves the same upload order, vCard aliases, non-deleting behavior and CloudFront wait.
 
 `master` remains the production/default branch for now. Keeping the existing branch avoids combining a default-branch migration with the first automated release. The release path is `develop` -> `master`; migrating to `main` can be handled separately after the pipeline is proven.
 
