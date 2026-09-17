@@ -149,7 +149,10 @@ resource "aws_cloudwatch_log_delivery" "cloudfront_to_s3" {
   delivery_destination_arn = aws_cloudwatch_log_delivery_destination.s3.arn
 
   # These fields answer traffic questions without storing viewer IP addresses,
-  # cookies, query strings, forwarded headers, or request bodies.
+  # cookies, query strings, forwarded headers, or request bodies. x-host-header is
+  # the Host the viewer requested, not a visitor identifier; the analytics collector
+  # uses it to keep www.rosa.bot's figures to www.rosa.bot. cs(Host) is only the
+  # distribution's own cloudfront.net domain.
   record_fields = [
     "date",
     "time",
@@ -157,6 +160,7 @@ resource "aws_cloudwatch_log_delivery" "cloudfront_to_s3" {
     "sc-bytes",
     "cs-method",
     "cs(Host)",
+    "x-host-header",
     "cs-uri-stem",
     "sc-status",
     "cs(Referer)",

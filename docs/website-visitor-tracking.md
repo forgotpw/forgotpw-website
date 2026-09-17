@@ -22,7 +22,7 @@ Terraform destroy. Logs are JSON and grouped by distribution and UTC date.
 
 ## Privacy boundaries
 
-The selected fields cover timestamps, requested paths, response status and size,
+The selected fields cover timestamps, the requested hostname and path, response status and size,
 referrer, user agent, country, TLS details, cache result, and timing. The delivery
 does **not** record viewer IP addresses, cookies, the query string on the requested
 Rosa URL, forwarded-for headers, or request bodies. Referrers are stored as sent by
