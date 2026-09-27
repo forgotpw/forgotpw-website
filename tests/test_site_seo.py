@@ -67,7 +67,8 @@ class SiteSEOTests(unittest.TestCase):
                 sitemap = ET.parse(site / "sitemap.xml")
                 urls = [e.text for e in sitemap.findall(".//{*}loc")]
                 self.assertEqual(urls, ["https://www.rosa.bot/",
-                                        "https://www.rosa.bot/privacy.html"])
+                                        "https://www.rosa.bot/privacy.html",
+                                        "https://www.rosa.bot/terms.html"])
                 robots = (site / "robots.txt").read_text()
                 self.assertIn("Allow: /", robots)
                 self.assertNotIn("Disallow:", robots)

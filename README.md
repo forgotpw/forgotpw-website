@@ -8,9 +8,9 @@ Static marketing website for [Rosa.bot](https://www.rosa.bot), formerly ForgotPW
 python3 -m http.server 8794 --bind 127.0.0.1 --directory src
 ```
 
-Open [the local preview](http://127.0.0.1:8794). Check the homepage and `privacy.html`, narrow mobile layouts, menu open/close, FAQ disclosures, and the SMS/contact links. The phone illustration is an example conversation, not a live credential interface. Do not submit real passwords while reviewing the marketing site.
+Open [the local preview](http://127.0.0.1:8794). Check the homepage, `privacy.html` and `terms.html`, narrow mobile layouts, menu open/close, FAQ disclosures, and the SMS/contact links. The phone illustration is an example conversation, not a live credential interface. Do not submit real passwords while reviewing the marketing site.
 
-The homepage uses `src/css/rosa.css` and `src/scripts/rosa.js`. The original Rosa logo is retained. The existing analytics/ad identifiers and SMS conversion events are preserved on the homepage. The published privacy policy wording and effective date are retained with updated layout/navigation; it still contains legacy ForgotPW references and needs a separate policy review before a broader relaunch.
+The homepage uses `src/css/rosa.css` and `src/scripts/rosa.js`. The original Rosa logo is retained. The existing analytics/ad identifiers and SMS conversion events are preserved on the homepage. The Privacy Policy (`privacy.html`) and Terms of Service (`terms.html`) are the only copies of Rosa's policies; Git history is their version record. They double as the privacy and terms URLs for Rosa's Twilio A2P 10DLC campaigns, so keep the SMS disclosures (message frequency, message and data rates, bold STOP and HELP, support contact, carrier disclaimer and the marketing non-sharing statement) and the disclosure line beside the homepage calls to action. Any change to Rosa's data handling, trackers, texts or pricing must be reflected there.
 
 ## Hosting and deployment
 
@@ -80,8 +80,8 @@ Use the normal AWS SSO login for the chosen profile if its session has expired. 
 
 ## Search indexing
 
-The homepage and privacy page use production canonical URLs. `src/sitemap.xml`
-lists those two URLs, and `src/robots.txt` advertises that sitemap without blocking
+The homepage, privacy and terms pages use production canonical URLs. `src/sitemap.xml`
+lists those three URLs, and `src/robots.txt` advertises that sitemap without blocking
 page or asset crawling. The homepage includes `WebSite` structured data for the
 Rosa name and a descriptive search title. Social-sharing metadata remains separate.
 
@@ -99,7 +99,7 @@ python3 -m unittest discover -s tests -p 'test_site*.py'
 node --test tests/test_redirect.cjs
 ```
 
-After each release, check `/`, `/privacy.html`, `/robots.txt`, and `/sitemap.xml`
+After each release, check `/`, `/privacy.html`, `/terms.html`, `/robots.txt`, and `/sitemap.xml`
 on the target host, including the HTML robots tag and canonical. Unknown paths
 must continue returning HTTP 404; do not rewrite missing pages to the homepage.
 HTTP-to-HTTPS redirects and CloudFront compression were already enabled in both
@@ -133,7 +133,7 @@ CloudFront standard logging v2 stores privacy-minimized access logs in a separat
 private S3 bucket in each AWS account. The narrow Terraform module attaches to
 the existing distributions without taking ownership of them. A local script
 summarizes requests, approximate browser page views, referrers, user agents, and
-daily trends. The homepage and privacy page also publish canonical Open Graph and
+daily trends. The homepage, privacy and terms pages also publish canonical Open Graph and
 Twitter Card metadata with a dedicated 1200 x 630 social image. See
 [`docs/website-visitor-tracking.md`](docs/website-visitor-tracking.md) for the
 architecture, privacy limits, costs, retrieval commands, and release checks.
