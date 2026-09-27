@@ -78,7 +78,7 @@ The report may therefore be empty immediately after the first deployment.
 
 ## Social sharing checks
 
-The homepage and privacy page include canonical, Open Graph, and Twitter Card
+The homepage, privacy and terms pages include canonical, Open Graph, and Twitter Card
 metadata. The shared 1200 x 630 PNG keeps the Rosa mark and headline inside the
 center of the card so wide and compact link previews remain legible.
 

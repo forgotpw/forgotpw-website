@@ -188,6 +188,13 @@ p {
 .cta-note a {
   text-decoration: none;
 }
+.sms-disclosure {
+  max-width: 430px;
+  margin-top: 8px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--muted);
+}
 .hero-benefits {
   display: flex;
   flex-wrap: wrap;
@@ -870,10 +877,18 @@ details[open] {
   background: #f2dbe3;
   color: var(--ink);
 }
-.closing p:last-child {
+.closing p:not(.eyebrow) {
   color: #fff;
   font-size: 12px;
   margin-top: 17px;
+}
+.closing p.sms-disclosure {
+  margin: 12px auto 0;
+  font-size: 11px;
+  color: #fbe1eb;
+}
+.closing .sms-disclosure a {
+  text-decoration: underline;
 }
 .closing p a {
   text-decoration: none;
@@ -902,26 +917,56 @@ details[open] {
 .site-footer span {
   color: var(--muted);
 }
-.privacy-content {
+.policy-content {
   max-width: 780px;
   padding-block: 70px 100px;
 }
-.privacy-content h1 {
+.policy-content h1 {
   font-size: 64px;
-  margin-bottom: 35px;
+  margin-bottom: 20px;
 }
-.privacy-content h2 {
+.policy-content h2 {
   font-family: var(--sans);
   font-size: 23px;
   letter-spacing: -0.02em;
   line-height: 1.4;
-  margin-block: 30px 15px;
+  margin-block: 38px 15px;
+  scroll-margin-top: 20px;
 }
-.privacy-content p {
+.policy-content p {
   margin-bottom: 18px;
 }
-.privacy-content li {
+.policy-content ul {
+  padding-left: 22px;
+  margin: 0 0 18px;
+}
+.policy-content li {
   color: var(--muted);
+  margin-bottom: 8px;
+}
+.policy-content li strong {
+  color: var(--ink);
+}
+.policy-content p a,
+.policy-content li a {
+  color: var(--rose);
+}
+.policy-updated {
+  color: var(--muted);
+  font-size: 14px;
+}
+.policy-summary {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 6px 28px 10px;
+  margin-block: 30px;
+}
+.policy-summary h2 {
+  margin-top: 20px;
+}
+.policy-summary li {
+  color: var(--ink);
 }
 @media (min-width: 1500px) {
   .hero {
@@ -1200,7 +1245,7 @@ details[open] {
   .site-footer > div > span {
     margin-left: auto;
   }
-  .privacy-content h1 {
+  .policy-content h1 {
     font-size: 48px;
   }
 }

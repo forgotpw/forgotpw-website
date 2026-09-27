@@ -24,7 +24,7 @@ class SiteCacheTests(unittest.TestCase):
                 for original, versioned in first.items():
                     self.assertEqual((root / "first" / versioned).read_bytes(),
                                      before[Path(original)])
-                    for page in ("index.html", "privacy.html"):
+                    for page in ("index.html", "privacy.html", "terms.html"):
                         text = (root / "first" / page).read_text()
                         self.assertNotIn(original + '"', text)
                 self.assertEqual(before, {p.relative_to(source): p.read_bytes()
