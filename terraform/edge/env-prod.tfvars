@@ -1,0 +1,5 @@
+environment         = "prod"
+expected_account_id = "162109821699"
+hostname            = "www.rosa.bot"
+distribution_id     = "E2IS3O9VPVJFGQ"
+dns_zone_id         = "ZZGO5P3B2M15I"

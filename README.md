@@ -127,6 +127,17 @@ References: [Google canonical URLs](https://developers.google.com/search/docs/cr
 [noindex and crawl access](https://developers.google.com/search/docs/crawling-indexing/block-indexing),
 and [site-name structured data](https://developers.google.com/search/docs/appearance/site-names).
 
+## Security headers and TLS
+
+`terraform/edge` (Terraform 1.8, applied by hand with `env-dev.tfvars` or `env-prod.tfvars`;
+state under `rosa-website-edge` in the account's `terraform-state-<account>` bucket) owns
+the website's CloudFront distribution and its DNS aliases. It adds a response headers
+policy (HSTS, `nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, and frame
+protection) and sets TLS 1.2 as the minimum. The homepage keeps its own analytics and ad
+tags, so its policy restricts framing only. The distribution and aliases were moved out
+of `terraform/dev` and `terraform/prod` because their Terraform 0.11 provider can't set a
+response headers policy.
+
 ## Visitor tracking and social sharing
 
 CloudFront standard logging v2 stores privacy-minimized access logs in a separate
