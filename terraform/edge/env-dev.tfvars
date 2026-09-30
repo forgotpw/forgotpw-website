@@ -1,0 +1,5 @@
+environment         = "dev"
+expected_account_id = "478543871670"
+hostname            = "www-dev.rosa.bot"
+distribution_id     = "E1FOKZO6RWD12W"
+dns_zone_id         = "Z25H8GAU4QTOBV"

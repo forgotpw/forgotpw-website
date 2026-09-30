@@ -53,6 +53,13 @@ the legacy `forgotpw-infrastructure/terraform/master` configuration as part of a
 website release. The latter contains the obsolete S3 apex alias; any future
 revival/migration must reconcile that resource with the live CloudFront target.
 
+The website's live distribution and aliases are managed by `terraform/edge`, not by those
+old configurations. Rosa sends no email from `rosa.bot`, so the apex zone also carries
+(added September 30, 2026 by a management-account change batch, not by Terraform): a null
+MX (`0 .`), an SPF `v=spf1 -all` beside the Google site-verification value in the apex TXT
+record, and `_dmarc` `v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s`. Keep them when
+changing other apex records.
+
 ## First production setup
 
 1. Review the development deployment, then promote to the existing production
