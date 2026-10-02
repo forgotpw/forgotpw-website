@@ -12,7 +12,7 @@ ROBOTS_TAG = '<meta name="robots" content="index, follow" />'
 # These assets have stable source names. Release copies get content-based names;
 # original URLs remain available for old pages, shared links and local previews.
 VERSIONED_ASSETS = (
-    "css/rosa.css", "scripts/rosa.js", "Images/rosa-logo.svg",
+    "css/rosa.css", "css/rosa-article.css", "scripts/rosa.js", "Images/rosa-logo.svg",
     "Images/favicon-32x32.png", "Images/apple-touch-icon.png",
     "Images/rosa-social-card.png", "Images/rosa-explainer-poster.jpg",
     "videos/rosa-explainer-v1.mp4", "videos/rosa-explainer-en.vtt",

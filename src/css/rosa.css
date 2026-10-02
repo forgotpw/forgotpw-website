@@ -1350,3 +1350,77 @@ details[open] {
     left: 10px;
   }
 }
+
+/* The security article introduction beneath the homepage security section. */
+.security-editorial {
+  border-top: 1px solid #cdbcc5;
+  display: grid;
+  grid-template-columns: 1fr 1.65fr;
+  gap: 65px;
+  padding: 38px 0 47px;
+  align-items: start;
+}
+.security-editorial .eyebrow {
+  margin-bottom: 13px;
+  font-size: 10px;
+  color: var(--rose);
+}
+.security-editorial h3 {
+  font: 400 36px/1.13 var(--serif);
+  letter-spacing: -0.035em;
+  max-width: 320px;
+}
+.security-editorial .summary {
+  font-size: 15px;
+  line-height: 1.8;
+  max-width: 610px;
+}
+.security-editorial .text-link {
+  margin-top: 18px;
+  font-size: 13px;
+  display: inline-flex;
+  gap: 27px;
+  align-items: center;
+  text-decoration: none;
+  border-bottom: 1px solid #dcb4c5;
+  padding-bottom: 4px;
+}
+.security-editorial .text-link:hover {
+  border-color: var(--rose);
+}
+.security-editorial .read-time {
+  font-size: 11px;
+  color: var(--muted);
+  margin-left: 20px;
+  white-space: nowrap;
+}
+@media (max-width: 1000px) {
+  .security-editorial {
+    gap: 40px;
+    grid-template-columns: 1fr 1.5fr;
+  }
+  .security-editorial h3 {
+    font-size: 32px;
+  }
+}
+@media (max-width: 760px) {
+  .security-editorial {
+    grid-template-columns: 1fr;
+    gap: 19px;
+    padding: 28px 0 35px;
+  }
+  .security-editorial h3 {
+    font-size: 34px;
+    max-width: 400px;
+  }
+  .security-editorial .summary {
+    font-size: 14px;
+  }
+  .security-editorial .read-time {
+    display: block;
+    margin: 12px 0 0;
+  }
+  .security-editorial .text-link {
+    margin-top: 18px;
+  }
+}
