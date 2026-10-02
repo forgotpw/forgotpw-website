@@ -42,7 +42,7 @@ class PrivacyPolicyTests(unittest.TestCase):
 class TextRosaLinkTests(unittest.TestCase):
     def test_every_page_links_to_the_same_sms_number(self):
         numbers = set()
-        for page in ("index.html", "privacy.html", "terms.html", "security.html"):
+        for page in ("index.html", "privacy.html", "terms.html", "password-security-and-simplicity.html"):
             hrefs = Anchors((SOURCE / page).read_text()).hrefs
             numbers.update(hrefs)
         self.assertEqual(numbers, {"sms:+18647778711"})

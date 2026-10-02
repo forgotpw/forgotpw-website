@@ -8,19 +8,27 @@ Static marketing website for [Rosa.bot](https://www.rosa.bot), formerly ForgotPW
 python3 -m http.server 8794 --bind 127.0.0.1 --directory src
 ```
 
-Open [the local preview](http://127.0.0.1:8794). Check the homepage, `security.html`, `privacy.html` and `terms.html`, narrow mobile layouts, menu open/close, FAQ disclosures, and the SMS/contact links. The phone illustration is an example conversation, not a live credential interface. Do not submit real passwords while reviewing the marketing site.
+Open [the local preview](http://127.0.0.1:8794). Check the homepage, `password-security-and-simplicity.html`, `privacy.html` and `terms.html`, narrow mobile layouts, menu open/close, FAQ disclosures, and the SMS/contact links. The phone illustration is an example conversation, not a live credential interface. Do not submit real passwords while reviewing the marketing site.
 
 The homepage uses `src/css/rosa.css` and `src/scripts/rosa.js`. The original Rosa logo is retained. The existing analytics/ad identifiers and SMS conversion events are preserved on the homepage. The Privacy Policy (`privacy.html`) and Terms of Service (`terms.html`) are the only copies of Rosa's policies; Git history is their version record. They double as the privacy and terms URLs for Rosa's Twilio A2P 10DLC campaigns, so keep the SMS disclosures (message frequency, message and data rates, bold STOP and HELP, support contact, carrier disclaimer and the marketing non-sharing statement) and the disclosure line beside the homepage calls to action. Any change to Rosa's data handling, trackers, texts or pricing must be reflected there.
 
 ## Security article
 
-`src/security.html` contains the approved article about Rosa’s audience and security
+`src/password-security-and-simplicity.html` contains the approved article about Rosa’s audience and security
 tradeoffs. It shares the existing header, mobile navigation and footer, with its reading
 layout in `src/css/rosa-article.css`. The homepage links to it from the security
 section and a short summary immediately below that section. Both stylesheets receive
 content-based URLs during site preparation. Article copy and the private research/claim
 decisions are retained in `forgotpw/product`, under `docs/rosa-security-*`. The article
 loads no advertising or analytics scripts; the homepage’s existing tags are unchanged.
+
+The descriptive article URL is `/password-security-and-simplicity.html`, distinct from
+the homepage’s `#security` section. It keeps the `.html` convention used by the other
+static pages. `/security.html` remains a compatibility page with an immediate HTML
+refresh and canonical pointing to the article; JavaScript also preserves query strings
+and section anchors for existing links. This is a browser redirect, not an HTTP 301.
+It needs no change to the existing S3/CloudFront routing. Google treats an
+[instant meta refresh as a permanent redirect](https://developers.google.com/search/docs/crawling-indexing/301-redirects#metarefresh).
 
 ## Hosting and deployment
 
@@ -109,7 +117,7 @@ python3 -m unittest discover -s tests -p 'test_site*.py'
 node --test tests/test_redirect.cjs
 ```
 
-After each release, check `/`, `/security.html`, `/privacy.html`, `/terms.html`, `/robots.txt`, and `/sitemap.xml`
+After each release, check `/`, `/password-security-and-simplicity.html`, `/privacy.html`, `/terms.html`, `/robots.txt`, and `/sitemap.xml`
 on the target host, including the HTML robots tag and canonical. Unknown paths
 must continue returning HTTP 404; do not rewrite missing pages to the homepage.
 HTTP-to-HTTPS redirects and CloudFront compression were already enabled in both

@@ -45,8 +45,11 @@ class SiteSEOTests(unittest.TestCase):
                 for name, page in pages.items():
                     canonical = [a["href"] for t, a in page.elements
                                  if t == "link" and a.get("rel") == "canonical"]
-                    self.assertEqual(canonical, ["https://www.rosa.bot/" +
-                                                 ("" if name == "index.html" else name)])
+                    canonical_path = {
+                        "index.html": "",
+                        "security.html": "password-security-and-simplicity.html",
+                    }.get(name, name)
+                    self.assertEqual(canonical, ["https://www.rosa.bot/" + canonical_path])
                     self.assertEqual(sum(t == "h1" for t, _ in page.elements), 1)
                     for tag, attrs in page.elements:
                         if tag == "img":
@@ -69,12 +72,24 @@ class SiteSEOTests(unittest.TestCase):
                 self.assertEqual(urls, ["https://www.rosa.bot/",
                                         "https://www.rosa.bot/privacy.html",
                                         "https://www.rosa.bot/terms.html",
-                                        "https://www.rosa.bot/security.html"])
+                                        "https://www.rosa.bot/password-security-and-simplicity.html"])
                 robots = (site / "robots.txt").read_text()
                 self.assertIn("Allow: /", robots)
                 self.assertNotIn("Disallow:", robots)
                 self.assertIn("Sitemap: https://www.rosa.bot/sitemap.xml", robots)
                 html = (site / "index.html").read_text()
+                self.assertEqual(html.count('href="password-security-and-simplicity.html"'), 2)
+                self.assertNotIn('href="security.html"', html)
+                self.assertIn('href="#security"', html)
+                redirect = pages["security.html"]
+                refresh = [a["content"] for t, a in redirect.elements
+                           if t == "meta" and a.get("http-equiv") == "refresh"]
+                self.assertEqual(refresh, ["0; url=password-security-and-simplicity.html"])
+                self.assertNotIn("https://www.rosa.bot/security.html", urls)
+                article = pages["password-security-and-simplicity.html"]
+                self.assertEqual([a["content"] for t, a in article.elements
+                                  if t == "meta" and a.get("property") == "og:url"],
+                                 ["https://www.rosa.bot/password-security-and-simplicity.html"])
                 schema = json.loads(html.split('<script type="application/ld+json">')[1]
                                     .split("</script>")[0])
                 self.assertEqual(schema["@type"], "WebSite")
