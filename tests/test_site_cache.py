@@ -20,11 +20,14 @@ class SiteCacheTests(unittest.TestCase):
             # Only redirect the source path; all preparation uses actual filesystem I/O.
             with patch.object(preparation, "SOURCE", source):
                 first = preparation.asset_versions(source)
+                self.assertIn("css/rosa-article.css", first)
                 preparation.prepare_site("prod", root / "first")
+                article = (root / "first/security.html").read_text()
+                self.assertIn(first["css/rosa-article.css"], article)
                 for original, versioned in first.items():
                     self.assertEqual((root / "first" / versioned).read_bytes(),
                                      before[Path(original)])
-                    for page in ("index.html", "privacy.html", "terms.html"):
+                    for page in ("index.html", "privacy.html", "terms.html", "security.html"):
                         text = (root / "first" / page).read_text()
                         self.assertNotIn(original + '"', text)
                 self.assertEqual(before, {p.relative_to(source): p.read_bytes()

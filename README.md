@@ -8,9 +8,19 @@ Static marketing website for [Rosa.bot](https://www.rosa.bot), formerly ForgotPW
 python3 -m http.server 8794 --bind 127.0.0.1 --directory src
 ```
 
-Open [the local preview](http://127.0.0.1:8794). Check the homepage, `privacy.html` and `terms.html`, narrow mobile layouts, menu open/close, FAQ disclosures, and the SMS/contact links. The phone illustration is an example conversation, not a live credential interface. Do not submit real passwords while reviewing the marketing site.
+Open [the local preview](http://127.0.0.1:8794). Check the homepage, `security.html`, `privacy.html` and `terms.html`, narrow mobile layouts, menu open/close, FAQ disclosures, and the SMS/contact links. The phone illustration is an example conversation, not a live credential interface. Do not submit real passwords while reviewing the marketing site.
 
 The homepage uses `src/css/rosa.css` and `src/scripts/rosa.js`. The original Rosa logo is retained. The existing analytics/ad identifiers and SMS conversion events are preserved on the homepage. The Privacy Policy (`privacy.html`) and Terms of Service (`terms.html`) are the only copies of Rosa's policies; Git history is their version record. They double as the privacy and terms URLs for Rosa's Twilio A2P 10DLC campaigns, so keep the SMS disclosures (message frequency, message and data rates, bold STOP and HELP, support contact, carrier disclaimer and the marketing non-sharing statement) and the disclosure line beside the homepage calls to action. Any change to Rosa's data handling, trackers, texts or pricing must be reflected there.
+
+## Security article
+
+`src/security.html` contains the approved article about Rosa’s audience and security
+tradeoffs. It shares the existing header, mobile navigation and footer, with its reading
+layout in `src/css/rosa-article.css`. The homepage links to it from the security
+section and a short summary immediately below that section. Both stylesheets receive
+content-based URLs during site preparation. Article copy and the private research/claim
+decisions are retained in `forgotpw/product`, under `docs/rosa-security-*`. The article
+loads no advertising or analytics scripts; the homepage’s existing tags are unchanged.
 
 ## Hosting and deployment
 
@@ -80,8 +90,8 @@ Use the normal AWS SSO login for the chosen profile if its session has expired. 
 
 ## Search indexing
 
-The homepage, privacy and terms pages use production canonical URLs. `src/sitemap.xml`
-lists those three URLs, and `src/robots.txt` advertises that sitemap without blocking
+The homepage, security article, privacy and terms pages use production canonical URLs. `src/sitemap.xml`
+lists those four URLs, and `src/robots.txt` advertises that sitemap without blocking
 page or asset crawling. The homepage includes `WebSite` structured data for the
 Rosa name and a descriptive search title. Social-sharing metadata remains separate.
 
@@ -99,7 +109,7 @@ python3 -m unittest discover -s tests -p 'test_site*.py'
 node --test tests/test_redirect.cjs
 ```
 
-After each release, check `/`, `/privacy.html`, `/terms.html`, `/robots.txt`, and `/sitemap.xml`
+After each release, check `/`, `/security.html`, `/privacy.html`, `/terms.html`, `/robots.txt`, and `/sitemap.xml`
 on the target host, including the HTML robots tag and canonical. Unknown paths
 must continue returning HTTP 404; do not rewrite missing pages to the homepage.
 HTTP-to-HTTPS redirects and CloudFront compression were already enabled in both
