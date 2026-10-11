@@ -114,7 +114,7 @@ Run the same focused artifact checks used by CI:
 
 ```sh
 python3 -m unittest discover -s tests -p 'test_site*.py'
-node --test tests/test_redirect.cjs
+node --test 'tests/*.cjs'
 ```
 
 After each release, check `/`, `/password-security-and-simplicity.html`, `/privacy.html`, `/terms.html`, `/robots.txt`, and `/sitemap.xml`
@@ -178,3 +178,20 @@ VillageMetrics tracks its 48 MB MP4 in its `static-assets` repository. Rosa's ap
 The player uses native controls, `playsinline`, `preload="none"`, a poster, and captions. It never autoplays. The confirmed original is `Rosa Try 2 Fiverr.mp4` from Google Drive (file `1fOPslsVcoo8aujPtXxo1RIficPnchEBX`).
 
 The website cut removes the obsolete Alexa promotion at source timestamps **01:43.500–02:05.200**. The original is unchanged. English captions were transcribed locally and corrected against the source script and visible password examples.
+
+## Ad greeting and received-text measurement
+
+For `utm_campaign=rosa_good_dog_oct2026&utm_medium=paid_social`, homepage SMS links
+prepare “Hi Rosa! I saw your ad.” Customers can edit the greeting; sending is never
+automatic. Organic and other campaigns keep the plain number link. The existing
+advertising `Contact` event means a button click, not a received text.
+
+The REST API's `scripts/sms-conversions.js` counts actual received campaign greetings
+and unique responders from Twilio records without exporting customer details. The
+website and backend greeting must match. Release the backend greeting handler before
+or alongside the homepage change. Phone testing is a launch gate: check recipient,
+body and normal onboarding on iPhone/Android, including Facebook/Instagram browsers.
+Apple body-prefill behavior is not guaranteed by its documented SMS-link contract;
+if a supported composer drops the greeting, campaign attribution cannot be promised
+for that path. Editing or removing it also leaves the text unattributed. The report
+is separate from Meta optimization and does not provide a conversion event to Meta.

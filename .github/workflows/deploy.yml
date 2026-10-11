@@ -28,7 +28,7 @@ jobs:
       - name: Validate website search metadata and deployment artifacts
         run: |
           python3 -m unittest discover -s tests -p 'test_site*.py'
-          node --test tests/test_redirect.cjs
+          node --test 'tests/*.cjs'
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6
@@ -195,7 +195,7 @@ jobs:
       - name: Validate website search metadata and deployment artifacts
         run: |
           python3 -m unittest discover -s tests -p 'test_site*.py'
-          node --test tests/test_redirect.cjs
+          node --test 'tests/*.cjs'
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6

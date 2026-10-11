@@ -35,7 +35,19 @@ window.addEventListener("hashchange", revealLinkedAnswer);
 revealLinkedAnswer();
 
 // Preserve the existing SMS conversion event on the redesigned calls to action.
+const campaign = new URLSearchParams(window.location.search).get('utm_campaign');
+const fromAd = new URLSearchParams(window.location.search).get('utm_medium') === 'paid_social';
+const campaignGreeting = campaign === 'rosa_good_dog_oct2026' && fromAd
+  ? 'Hi Rosa! I saw your ad.' : null;
+// Use the common Apple &body convention; other clients use standard ?body.
+// A real phone composer check is required before a campaign uses this handoff.
+const appleMessages = /iPhone|iPad|iPod/.test(navigator.userAgent) ||
+  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 document.querySelectorAll('a[href^="sms:"]').forEach((link) => {
+  if (campaignGreeting) {
+    link.href = link.getAttribute('href') + (appleMessages ? '&body=' : '?body=') +
+      encodeURIComponent(campaignGreeting);
+  }
   link.addEventListener("click", () => {
     if (typeof fireConversionScripts === "function") fireConversionScripts();
   });
